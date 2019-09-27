@@ -47,8 +47,8 @@ function beans_load_api_components( $components ) {
 			$root . 'compiler/class-beans-page-compiler.php',
 		),
 		'uikit'        => array(
-			$root . 'uikit/functions.php',
-			$root . 'uikit/class-beans-uikit.php',
+//			$root . 'uikit/functions.php',
+//			$root . 'uikit/class-beans-uikit.php',
 		),
 		'layout'       => $root . 'layout/functions.php',
 		'template'     => $root . 'template/functions.php',
@@ -86,11 +86,12 @@ function beans_load_api_components( $components ) {
 		'layout'       => 'fields',
 		'image'        => '_admin_menu',
 		'compiler'     => '_admin_menu',
-		'uikit'        => 'compiler',
+//		'uikit'        => 'compiler',
 		'_admin_menu'  => 'options',
 	);
 
 	foreach ( (array) $components as $component ) {
+
 
 		// Stop here if the component is already loaded or doesn't exist.
 		if ( in_array( $component, $loaded, true ) || ( ! isset( $common[ $component ] ) && ! isset( $admin[ $component ] ) ) ) {
@@ -119,6 +120,9 @@ function beans_load_api_components( $components ) {
 
 		// Load components.
 		foreach ( $_components as $component_path ) {
+
+//			d($component_path);
+
 			require_once $component_path;
 		}
 
@@ -131,6 +135,8 @@ function beans_load_api_components( $components ) {
 		 */
 		do_action( 'beans_loaded_api_component_' . $component );
 	}
+
+
 
 	return true;
 }

@@ -154,6 +154,11 @@ function beans_compiler_add_fragment( $id, $fragments, $format ) {
 		return false;
 	}
 
+	if ( function_exists( 'get_template_directory_uri') && strpos($fragments, get_template_directory_uri()) !== false){
+		// Replace legacy code
+		$fragments = str_replace( get_template_directory_uri(), BEANS_FRONTEND_FRAMEWORK_BASE_URL, $fragments);
+	}
+
 	global $_beans_compiler_added_fragments;
 
 	foreach ( (array) $fragments as $key => $fragment ) {

@@ -6,6 +6,9 @@
  *
  * @since   1.0.0
  */
+require_once dirname( __FILE__ ) . '/verify-frontend-framework.php';
+
+
 
 add_action( 'beans_init', 'beans_define_constants', -1 );
 /**
@@ -18,7 +21,9 @@ add_action( 'beans_init', 'beans_define_constants', -1 );
  */
 function beans_define_constants() {
 	// Define version.
-	define( 'BEANS_VERSION', '1.5.1' );
+	define( 'BEANS_VERSION', '1.7.0' );
+
+
 
 	// Define paths.
 	if ( ! defined( 'BEANS_THEME_PATH' ) ) {
@@ -29,10 +34,13 @@ function beans_define_constants() {
 	define( 'BEANS_API_PATH', BEANS_PATH . 'api/' );
 	define( 'BEANS_ASSETS_PATH', BEANS_PATH . 'assets/' );
 	define( 'BEANS_LANGUAGES_PATH', BEANS_PATH . 'languages/' );
-	define( 'BEANS_RENDER_PATH', BEANS_PATH . 'render/' );
-	define( 'BEANS_TEMPLATES_PATH', BEANS_PATH . 'templates/' );
-	define( 'BEANS_STRUCTURE_PATH', BEANS_TEMPLATES_PATH . 'structure/' );
-	define( 'BEANS_FRAGMENTS_PATH', BEANS_TEMPLATES_PATH . 'fragments/' );
+
+	if( ! defined('BEANS_STRUCTURE_PATH' )) {
+		define( 'BEANS_STRUCTURE_PATH', BEANS_TEMPLATES_PATH . 'structure/' );
+	}
+	if( ! defined('BEANS_FRAGMENTS_PATH' )) {
+		define( 'BEANS_FRAGMENTS_PATH', BEANS_TEMPLATES_PATH . 'fragments/' );
+	}
 
 	// Define urls.
 	if ( ! defined( 'BEANS_THEME_URL' ) ) {
@@ -96,6 +104,7 @@ function beans_load_dependencies() {
 	do_action( 'beans_after_load_api' );
 }
 
+
 add_action( 'beans_init', 'beans_add_theme_support' );
 /**
  * Add theme support.
@@ -145,6 +154,7 @@ add_action( 'beans_init', 'beans_includes' );
 /**
  * Include framework files.
  *
+ * @modified 2.0.0 - removed hard dependency on uikit2
  * @since 1.0.0
  * @ignore
  *
@@ -158,20 +168,12 @@ function beans_includes() {
 		require_once BEANS_ADMIN_PATH . 'updater.php';
 	}
 
-	// Include assets.
-	require_once BEANS_ASSETS_PATH . 'assets.php';
-
 	// Include customizer.
 	if ( is_customize_preview() ) {
 		require_once BEANS_ADMIN_PATH . 'wp-customize.php';
 	}
 
-	// Include renderers.
-	require_once BEANS_RENDER_PATH . 'template-parts.php';
-	require_once BEANS_RENDER_PATH . 'fragments.php';
-	require_once BEANS_RENDER_PATH . 'widget-area.php';
-	require_once BEANS_RENDER_PATH . 'walker.php';
-	require_once BEANS_RENDER_PATH . 'menu.php';
+
 }
 
 add_action( 'beans_init', 'beans_load_textdomain' );

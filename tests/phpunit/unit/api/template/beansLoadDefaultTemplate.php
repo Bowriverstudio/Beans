@@ -30,7 +30,7 @@ class Tests_BeansLoadDefaultTemplate extends Template_Test_Case {
 		$file = vfsStream::url( 'templates/structure/does-not-exist.php' );
 
 		$this->assertFileNotExists( $file );
-		$this->assertFileNotExists( BEANS_STRUCTURE_PATH . 'does-not-exist.php' );
+		$this->assertFileNotExists( c . 'does-not-exist.php' );
 		$this->assertFalse( beans_load_default_template( $file ) );
 
 		$this->assertFileNotExists( BEANS_STRUCTURE_PATH . basename( __FILE__ ) );
