@@ -83,31 +83,7 @@ final class _Beans_Admin {
 			)
 		);
 
-		$fields = array(
-			array(
-				'id'          => 'beans_css_framework',
-				'type'        => 'select',
-				'label'       => __( 'Choose the CSS Frameworks', 'tm-beans' ),
-				'default'     => 'uikit2',
-				'options'     => array(
-					'bootstrap4' => __( 'BootStrap 4.3.1', 'tm-beans' ),
-					'uikit2'     => __( 'UiKit 2', 'tm-beans' ),
-					'uikit3'     => __( 'UiKit 3', 'tm-beans' ),
-				),
-				'description' => __( '<a href="https://getbootstrap.com/" target="_blank">Bootstrap 4.3.1</a><br><a href="https://getuikit.com/v2/" target="_blank">UiKit 2 (Default)</a><br><a href="https://getuikit.com" target="_blank">UiKit 3</a>', 'tm-beans' ),
-			),
-		);
 
-		beans_register_options(
-			$fields,
-			'beans_settings',
-			'css_framework_options',
-			array(
-				'title'   => __( 'CSS Framework options', 'tm-beans' ),
-				'context' => beans_get( 'beans_settings', $wp_meta_boxes ) ? 'column' : 'normal',
-				// Check for other beans boxes.
-			)
-		);
 	}
 }
 
