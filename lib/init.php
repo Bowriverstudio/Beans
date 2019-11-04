@@ -49,10 +49,7 @@ function beans_define_constants() {
 
 	define( 'BEANS_URL', BEANS_THEME_URL . 'lib/' );
 	define( 'BEANS_API_URL', BEANS_URL . 'api/' );
-	define( 'BEANS_ASSETS_URL', BEANS_URL . 'assets/' );
-	define( 'BEANS_LESS_URL', BEANS_ASSETS_URL . 'less/' );
-	define( 'BEANS_JS_URL', BEANS_ASSETS_URL . 'js/' );
-	define( 'BEANS_IMAGE_URL', BEANS_ASSETS_URL . 'images/' );
+
 
 	// Define admin paths.
 	define( 'BEANS_ADMIN_PATH', BEANS_PATH . 'admin/' );
