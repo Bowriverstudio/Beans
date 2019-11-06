@@ -16,7 +16,7 @@
  *
  * @package Beans\Framework\API
  */
-final class _Beans_Admin {
+final class _Beans_Admin_Menu_Settings {
 
 	/**
 	 * Constructor.
@@ -34,7 +34,11 @@ final class _Beans_Admin {
 	 * @return void
 	 */
 	public function admin_menu() {
-		add_theme_page( __( 'Settings', 'tm-beans' ), __( 'Settings', 'tm-beans' ), 'manage_options', 'beans_settings', array( $this, 'display_screen' ) );
+
+//		add_theme_page( __( 'Settings', 'tm-beans' ), __( 'Settings', 'tm-beans' ), 'manage_options', 'beans_settings', array( $this, 'display_screen' ) );
+//		add_theme_page( __( 'Settings', 'tm-beans' ), __( 'Settings', 'tm-beans' ), 'manage_options', 'beans_settings', array( $this, 'display_screen' ) );
+		add_submenu_page( 'beans', __( 'Settings', 'tm-beans' ), __( 'Settings', 'tm-beans' ), 'manage_options', 'beans_settings', array( $this, 'display_screen' ));
+
 	}
 
 	/**
@@ -86,4 +90,4 @@ final class _Beans_Admin {
 	}
 }
 
-new _Beans_Admin();
+new _Beans_Admin_Menu_Settings();
