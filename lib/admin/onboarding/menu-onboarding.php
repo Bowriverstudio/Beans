@@ -16,14 +16,13 @@
  *
  * @package Beans\Framework\API
  */
-final class _Beans_Admin_Menu_Settings {
+final class _Beans_Admin_Menu_Onboarding {
 
 	/**
 	 * Constructor.
 	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ), 150 );
-		add_action( 'admin_init', array( $this, 'register' ), 20 );
 	}
 
 	/**
@@ -34,11 +33,7 @@ final class _Beans_Admin_Menu_Settings {
 	 * @return void
 	 */
 	public function admin_menu() {
-
-//		add_theme_page( __( 'Settings', 'tm-beans' ), __( 'Settings', 'tm-beans' ), 'manage_options', 'beans_settings', array( $this, 'display_screen' ) );
-//		add_theme_page( __( 'Settings', 'tm-beans' ), __( 'Settings', 'tm-beans' ), 'manage_options', 'beans_settings', array( $this, 'display_screen' ) );
-		add_submenu_page( 'beans', __( 'Settings', 'tm-beans' ), __( 'Settings', 'tm-beans' ), 'manage_options', 'beans_settings', array( $this, 'display_screen' ));
-
+		add_submenu_page( 'beans', __( 'Onboarding', 'tm-beans' ), __( 'Onboarding', 'tm-beans' ), 'manage_options', 'beans_onboarding', array( $this, 'display_screen' ));
 	}
 
 	/**
@@ -49,45 +44,32 @@ final class _Beans_Admin_Menu_Settings {
 	 * @return void
 	 */
 	public function display_screen() {
+
+		$onboarding = new _Beans_Admin_Onboarding();
+		if($_POST['submit']) {
+			$onboarding->install();
+		}
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Beans Settings', 'tm-beans' ); ?><span style="float: right; font-size: 12px; color: #555;"><?php esc_html_e( 'Version ', 'tm-beans' ); ?><?php echo esc_attr( BEANS_VERSION ); ?></span></h1>
-			<?php beans_options( 'beans_settings' ); ?>
+			<h1><?php esc_html_e( 'Beans Onboarding', 'tm-beans' ); ?></h1>
+			<p>This does things .... </p>
+			<h2>Title: <?php echo esc_html( $onboarding->display_title() ) ?></h2>
+			<div class="beans-screenshot"> <?php echo esc_html( $onboarding->display_image() ) ?></div>
+			<div>
+				<h3>Plugin List</h3>
+				<?php
+				foreach ($onboarding->onboarding_plugins() as $plugin){
+					printf( '<div>%s %s</div>', __('Plugin Name:', 'tm-beans'), $plugin['name']);
+				}
+				?>
+			<form  action="" method="POST">
+				<input class="button-primary" type="submit" name="submit" value="Install" />
+			</form>
 		</div>
 		<?php
 	}
 
-	/**
-	 * Register options.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return void
-	 */
-	public function register() {
-		global $wp_meta_boxes;
 
-		$fields = array(
-			array(
-				'id'             => 'beans_dev_mode',
-				'label'          => __( 'Enable development mode', 'tm-beans' ),
-				'checkbox_label' => __( 'Select to activate development mode.', 'tm-beans' ),
-				'type'           => 'checkbox',
-				'description'    => __( 'This option should be enabled while your website is in development.', 'tm-beans' ),
-			),
-		);
-
-		beans_register_options(
-			$fields,
-			'beans_settings',
-			'mode_options',
-			array(
-				'title'   => __( 'Mode options', 'tm-beans' ),
-				'context' => beans_get( 'beans_settings', $wp_meta_boxes ) ? 'column' : 'normal', // Check for other beans boxes.
-			)
-		);
-
-	}
 }
 
-new _Beans_Admin_Menu_Settings();
+new _Beans_Admin_Menu_Onboarding();

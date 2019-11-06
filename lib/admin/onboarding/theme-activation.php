@@ -20,11 +20,13 @@ add_action( 'admin_init', 'genesis_theme_activation_redirect' );
  */
 function genesis_theme_activation_redirect() {
 
-	global $pagenow;
+	return;
 
-	if ( 'themes.php' !== $pagenow || ! isset( $_GET['activated'] ) || ! is_admin() ) { // phpcs:ignore WordPress.Security.NonceVerification.NoNonceVerification
-		return;
-	}
+	global $pagenow;
+// TODO add again once debugging is over
+//	if ( 'themes.php' !== $pagenow || ! isset( $_GET['activated'] ) || ! is_admin() ) { // phpcs:ignore WordPress.Security.NonceVerification.NoNonceVerification
+//		return;
+//	}
 
 	if ( version_compare( $GLOBALS['wp_version'], '5.0', '<' ) ) {
 		return;
@@ -34,6 +36,8 @@ function genesis_theme_activation_redirect() {
 	if ( ! is_readable( locate_template( '/config/onboarding.php' ) ) ) {
 		return;
 	}
+
+
 
 	wp_safe_redirect( esc_url( admin_url( 'admin.php?page=genesis-getting-started' ) ) );
 	exit;

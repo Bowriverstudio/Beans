@@ -161,16 +161,18 @@ function beans_includes() {
 
 	// Include admin.
 	if ( is_admin() ) {
+		require_once BEANS_ADMIN_PATH . 'menu.php';
 		require_once BEANS_ADMIN_PATH . 'options.php';
 		require_once BEANS_ADMIN_PATH . 'updater.php';
 		require_once BEANS_ADMIN_PATH . 'use-child-theme.php';
+		require_once BEANS_ADMIN_PATH . 'onboarding/functions.php';
+
 	}
 
 	// Include customizer.
 	if ( is_customize_preview() ) {
 		require_once BEANS_ADMIN_PATH . 'wp-customize.php';
 	}
-
 
 }
 
