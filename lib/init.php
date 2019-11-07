@@ -174,6 +174,9 @@ function beans_includes() {
 		require_once BEANS_ADMIN_PATH . 'wp-customize.php';
 	}
 
+	require_once BEANS_PATH . 'renderer/menu.php';
+
+
 }
 
 add_action( 'beans_init', 'beans_load_textdomain' );
