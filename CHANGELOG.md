@@ -3,6 +3,7 @@
 ## 2019 version 2.0.0
 
 * Added admin warning when child theme not included.
+* Added configuration for menus, widgets, blocks.
 
 
 ## 2018.07.22 - version 1.5.1
