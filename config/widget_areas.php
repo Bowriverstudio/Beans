@@ -1,6 +1,6 @@
 <?php
 /**
- * Default supported default Beans widgets. Can be over writable in the child theme.
+ * Default supported default Beans widget areas. Can be over writable in the child theme.
  *
  * Sample
  * ```

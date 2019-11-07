@@ -332,11 +332,11 @@ beans_add_action( 'beans_widgets_init','widgets_init', 'beans_do_widget_init' );
  * @return void
  */
 function beans_do_widget_init(){
-	$widgets = beans_get_config( 'widgets' );
+	$widget_areas = beans_get_config( 'widget_areas' );
 
-	if( isset($widgets) && is_array($widgets)){
-		foreach($widgets as $widget){
-			beans_register_widget_area($widget);
+	if( isset($widget_areas) && is_array($widget_areas)){
+		foreach($widget_areas as $widget_area){
+			beans_register_widget_area($widget_area);
 		}
 	}
 }

@@ -62,6 +62,19 @@ final class _Beans_Admin_Menu_Onboarding {
 					printf( '<div>%s %s</div>', __('Plugin Name:', 'tm-beans'), $plugin['name']);
 				}
 				?>
+			</div>
+			<div>
+				<h3>Widget List</h3>
+				<?php
+				foreach ($onboarding->onboarding_widgets() as $key => $widget){
+					printf( '<div>%s %s</div>', __('Widget Slug:', 'tm-beans'), $key);
+				}
+				?>
+
+			</div>
+
+
+
 			<form  action="" method="POST">
 				<input class="button-primary" type="submit" name="submit" value="Install" />
 			</form>
