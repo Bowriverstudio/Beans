@@ -24,8 +24,8 @@ final class _Beans_Admin_Onboarding
 
 		//self::install_plugins();
 		self::onboarding_import_content();
-//		self::onboarding_create_navigation_menu_items();
-//		self::import_widgets();
+		self::onboarding_create_navigation_menu_items();
+		self::import_widgets();
 
 	}
 
