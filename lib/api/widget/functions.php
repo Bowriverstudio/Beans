@@ -324,6 +324,23 @@ function beans_widget_shortcodes( $content ) {
 	return beans_array_shortcodes( $content, $GLOBALS['_beans_widget'] );
 }
 
+beans_add_action( 'beans_widgets_init','widgets_init', 'beans_do_widget_init' );
+/**
+ * Registers widgets defined in the configuration widget file.
+ *
+ * @since 2.0.0
+ * @return void
+ */
+function beans_do_widget_init(){
+	$widgets = beans_get_config( 'widgets' );
+
+	if( isset($widgets) && is_array($widgets)){
+		foreach($widgets as $widget){
+			beans_register_widget_area($widget);
+		}
+	}
+}
+
 /**
  * Set up widget area global data.
  *
