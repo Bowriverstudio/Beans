@@ -720,7 +720,7 @@ function _beans_doing_autosave() {
  * @param string $configuration_filename The configuration file to locate  (not including ".php" file extension).
  * @return array The configuration data.
  */
-function beans_get_config( $configuration_filename ) {
+function beans_get_config( string $configuration_filename ) {
 
 	$child_file = get_stylesheet_directory() . '/config/' . $configuration_filename . '.php';
 
@@ -739,3 +739,21 @@ function beans_get_config( $configuration_filename ) {
 
 	return (array) $data;
 }
+
+
+/**
+ * Locate the customizer configuration file for the default id.
+ *
+ * @since 2.0
+ *
+ * @param string id The customizer id.
+ * @return string The default customizer value if set otherwise empty string.
+ */
+function beans_get_customizer_default_value(string $id) {
+	$config = beans_get_config('customizer');
+	if (isset($config) && array_key_exists($id, $config)) {
+		return $config[$id];
+	}
+	return '';
+}
+
