@@ -16,7 +16,6 @@ beans_add_smart_action( 'after_setup_theme', 'beans_do_register_default_menu' );
  * @return void
  */
 function beans_do_register_default_menu() {
-
 	// Stop here if a menu already exists.
 	if ( wp_get_nav_menus() ) {
 		return;
