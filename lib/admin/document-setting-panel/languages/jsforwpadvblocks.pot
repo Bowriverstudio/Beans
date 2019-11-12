@@ -127,39 +127,39 @@ msgstr ""
 msgid "Table of Contents"
 msgstr ""
 
-#: plugins/03-layout-switcher/components/ResetControls.js:22
+#: plugins/beans/components/ResetControls.js:22
 msgid "Warning!"
 msgstr ""
 
-#: plugins/03-layout-switcher/components/ResetControls.js:26
+#: plugins/beans/components/ResetControls.js:26
 msgid "This action will remove all blocks"
 msgstr ""
 
-#: plugins/03-layout-switcher/components/ResetControls.js:28
+#: plugins/beans/components/ResetControls.js:28
 msgid "This can be undone before leaving the page with the Undo option."
 msgstr ""
 
-#: plugins/03-layout-switcher/components/ResetControls.js:43
-#: plugins/03-layout-switcher/components/SwitcherControls.js:29
+#: plugins/beans/components/ResetControls.js:43
+#: plugins/beans/components/SwitcherControls.js:29
 msgid "Reset Layout"
 msgstr ""
 
-#: plugins/03-layout-switcher/components/SwitcherControls.js:13
+#: plugins/beans/components/SwitcherControls.js:13
 msgid "Layout Choices"
 msgstr ""
 
-#: plugins/03-layout-switcher/components/SwitcherControls.js:16
+#: plugins/beans/components/SwitcherControls.js:16
 msgid "Hero"
 msgstr ""
 
-#: plugins/03-layout-switcher/components/SwitcherControls.js:22
+#: plugins/beans/components/SwitcherControls.js:22
 msgid "Feature"
 msgstr ""
 
-#: plugins/03-layout-switcher/index.js:31
+#: plugins/beans/index.js:32
 msgid "Outro Text"
 msgstr ""
 
-#: plugins/03-layout-switcher/index.js:43
+#: plugins/beans/index.js:44
 msgid "Layout Switcher"
 msgstr ""
