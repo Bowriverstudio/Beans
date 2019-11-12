@@ -149,11 +149,11 @@ msgid "Layout Choices"
 msgstr ""
 
 #: plugins/beans/components/SwitcherControls.js:16
-msgid "Hero"
+msgid "c"
 msgstr ""
 
 #: plugins/beans/components/SwitcherControls.js:22
-msgid "Feature"
+msgid "c-sp"
 msgstr ""
 
 #: plugins/beans/index.js:32
