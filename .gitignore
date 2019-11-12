@@ -4,3 +4,7 @@ composer.lock
 /vendor/
 /logs/
 /reports/
+/lib/admin/document-settings-panel/node_modules/
+/lib/admin/document-settings-panel/package-lock.json
+/lib/admin/document-settings-panel/composer.lock
+

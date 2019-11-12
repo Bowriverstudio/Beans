@@ -1,0 +1,165 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: babel-plugin-makepot\n"
+
+#: blocks/01-gallery/index.js:103
+msgid "Enable / disable lightbox"
+msgstr ""
+
+#: blocks/01-gallery/index.js:124
+msgid "Edit Gallery"
+msgstr ""
+
+#: blocks/01-gallery/index.js:138
+msgid "Gallery"
+msgstr ""
+
+#: blocks/01-gallery/index.js:139
+msgid "Drag images, upload new ones or select files from your library"
+msgstr ""
+
+#: blocks/01-gallery/index.js:36
+msgid "A demo custom gallery block"
+msgstr ""
+
+#: blocks/01-gallery/index.js:40
+msgid "Masonry"
+msgstr ""
+
+#: blocks/01-gallery/index.js:41
+msgid "Images Media"
+msgstr ""
+
+#: blocks/01-gallery/index.js:42
+msgid "Lightbox"
+msgstr ""
+
+#: blocks/01-gallery/index.js:87
+msgid "Gallery Settings"
+msgstr ""
+
+#: blocks/01-gallery/index.js:92
+msgid "Grid Style"
+msgstr ""
+
+#: blocks/02-data-example/components/DeleteButton.js:12
+#: blocks/02-data-example/components/DispatchDemo.js:20
+#: blocks/02-data-example/components/WithComposeDemo.js:19
+msgid "X"
+msgstr ""
+
+#: blocks/02-data-example/components/SelectDemo.js:13
+#: blocks/02-data-example/components/SubscribeDemo.js:37
+#: blocks/02-data-example/components/WithSelectDemo.js:10
+msgid "Block Count:"
+msgstr ""
+
+#: blocks/02-data-example/index.js:16
+msgid "Demo of select, subscribe, dispatch, withSelect, withDispatch and compose"
+msgstr ""
+
+#: blocks/02-data-example/index.js:37
+msgid "Data API Example"
+msgstr ""
+
+#: blocks/03-with-global-settings/edit.js:102
+msgid "Cancel"
+msgstr ""
+
+#: blocks/03-with-global-settings/edit.js:107
+msgid "Global Setting Saved"
+msgstr ""
+
+#: blocks/03-with-global-settings/edit.js:116
+msgid "Edit"
+msgstr ""
+
+#: blocks/03-with-global-settings/edit.js:126
+msgid "Please enter a block settings value in the block settings."
+msgstr ""
+
+#: blocks/03-with-global-settings/edit.js:133
+msgid "Global Setting: "
+msgstr ""
+
+#: blocks/03-with-global-settings/edit.js:57
+msgid "Loading"
+msgstr ""
+
+#: blocks/03-with-global-settings/edit.js:66
+msgid "Block Setting"
+msgstr ""
+
+#: blocks/03-with-global-settings/edit.js:73
+msgid "Please enter a setting"
+msgstr ""
+
+#: blocks/03-with-global-settings/edit.js:91
+msgid "Save Setting"
+msgstr ""
+
+#: blocks/03-with-global-settings/index.js:17
+msgid "With Global Settings"
+msgstr ""
+
+#: blocks/03-with-global-settings/index.js:18
+msgid "Example block with global block settings"
+msgstr ""
+
+#: blocks/03-with-global-settings/index.js:26
+msgid "API Key"
+msgstr ""
+
+#: blocks/03-with-global-settings/index.js:31
+msgid "Show block global settings"
+msgstr ""
+
+#: plugins/01-plugin-sidebar-demo/index.js:20
+msgid "Sidebar Header"
+msgstr ""
+
+#: plugins/01-plugin-sidebar-demo/index.js:22
+msgid "Plugin Sidebar Demo"
+msgstr ""
+
+#: plugins/02-toc/index.js:23
+msgid "Table of Contents"
+msgstr ""
+
+#: plugins/03-layout-switcher/components/ResetControls.js:22
+msgid "Warning!"
+msgstr ""
+
+#: plugins/03-layout-switcher/components/ResetControls.js:26
+msgid "This action will remove all blocks"
+msgstr ""
+
+#: plugins/03-layout-switcher/components/ResetControls.js:28
+msgid "This can be undone before leaving the page with the Undo option."
+msgstr ""
+
+#: plugins/03-layout-switcher/components/ResetControls.js:43
+#: plugins/03-layout-switcher/components/SwitcherControls.js:29
+msgid "Reset Layout"
+msgstr ""
+
+#: plugins/03-layout-switcher/components/SwitcherControls.js:13
+msgid "Layout Choices"
+msgstr ""
+
+#: plugins/03-layout-switcher/components/SwitcherControls.js:16
+msgid "Hero"
+msgstr ""
+
+#: plugins/03-layout-switcher/components/SwitcherControls.js:22
+msgid "Feature"
+msgstr ""
+
+#: plugins/03-layout-switcher/index.js:31
+msgid "Outro Text"
+msgstr ""
+
+#: plugins/03-layout-switcher/index.js:43
+msgid "Layout Switcher"
+msgstr ""

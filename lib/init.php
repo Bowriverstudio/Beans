@@ -166,7 +166,7 @@ function beans_includes() {
 		require_once BEANS_ADMIN_PATH . 'updater.php';
 		require_once BEANS_ADMIN_PATH . 'use-child-theme.php';
 		require_once BEANS_ADMIN_PATH . 'onboarding/functions.php';
-
+		require_once BEANS_ADMIN_PATH . 'document-setting-panel/functions.php';
 	}
 
 	// Include customizer.
