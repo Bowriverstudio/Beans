@@ -9,12 +9,12 @@
 	border-style: solid;
 	border-color: #d8d8d8 #d1d1d1 #bababa;
 	/*border-radius: 3px;*/
-	box-shadow: inset 0 -1px 0 #ccc;
+	/*box-shadow: inset 0 -1px 0 #ccc;*/
 	padding: 5px;
 }
 .layout-switcher button:active {
 	border-color: #999;
-	box-shadow: insert 0 1px 0 #999;
+	/*box-shadow: insert 0 1px 0 #999;*/
 }
 
 .layout-switcher .selected{
@@ -32,4 +32,9 @@
 .layout-switcher-reset h1.components-modal__header-heading {
 	color: white;
 	font-weight: bold;
+}
+
+.layout-switcher button svg {
+	width:40px;
+	height: 40px;
 }

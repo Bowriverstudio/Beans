@@ -1,4 +1,7 @@
 <?php
+/**
+ * Beans Gutenberg Sidebar.
+ */
 
 namespace Beans\Admin\Document_Settings_Panel;
 
@@ -25,20 +28,5 @@ function enqueue_assets(){
 
 	);
 }
-
-
-/*
- *
- *
- *
-
-wp.data.dispatch('core/editor').editPost({meta: {beans_layout: 'ssssnew value'}})
-wp.data.dispatch('core/editor').editPost({meta: {beans_layout: 'sssssnew value'}})
-
-
-
-
-
- */
 
 
