@@ -1,83 +1,38 @@
 <?php
-/**
- * Main plugin file
- *
- * @package     Adv_Gutenberg_Courses\Example_Blocks
- * @author      Zac Gordon (@zgordon)
- * @license     GPL2+
- *
- * @wordpress-plugin
- * Plugin Name: Gutenberg - Advanced Examples
- * Plugin URI:  https://javascriptforwp.com/
- * Description: A plugin containing advanced examples for developers.  From <a href="https://javascriptforwp.com/product/advanced-gutenberg-development/">Zac Gordon's Advanced Gutenberg Development Course</a>.
- * Version:     1.0.0
- * Author:      Zac Gordon
- * Author URI:  https://twitter.com/zgordon
- * Text Domain: jsforwpadvblocks
- * Domain Path: /languages
- * License:     GPL2+
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- */
-
-namespace Adv_Gutenberg_Courses\Example_Blocks;
-
-//  Exit if accessed directly.
-defined('ABSPATH') || exit;
+// Note that it’s a best practice to prefix function names (e.g. myprefix)
 
 
-define( 'BEANS_ADMIN_DOCUMENT_SETTING_PANEL_URL', BEANS_URL . 'admin/document-setting-panel' );
+define( 'BEANS_ADMIN_DOCUMENT_SETTING_PANEL_URL', BEANS_URL . 'admin/document-setting-panel/' );
 
 
+function myprefix_enqueue_assets() {
 
-/**
- * Gets this plugin's absolute directory path.
- *
- * @since  2.1.0
- * @ignore
- * @access private
- *
- * @return string
- */
-function _get_plugin_directory() {
-	return __DIR__;
+	$asset_file = include(BEANS_ADMIN_PATH.'document-setting-panel/build/index.asset.php');
+
+
+	wp_enqueue_script(
+		'myprefix-gutenberg-sidebar',
+		BEANS_ADMIN_DOCUMENT_SETTING_PANEL_URL .  'build/index.js',
+		array( 'wp-plugins', 'wp-edit-post', 'wp-i18n', 'wp-element' ),
+		$asset_file['dependencies'],
+		$asset_file['version']
+
+
+);
+
 }
+add_action( 'enqueue_block_editor_assets', 'myprefix_enqueue_assets' );
+//		filemtime( _get_plugin_directory() . $editor_js_path ),
+//		true
 
-/**
- * Gets this plugin's URL.
- *
- * @since  2.1.0
- * @ignore
- * @access private
- *
- * @return string
- */
-function _get_plugin_url() {
-	static $plugin_url;
 
-//	if ( empty( $plugin_url ) ) {
-////		$plugin_url = get_template_directory_uri()
-////		$plugin_url = plugins_url( null, __FILE__ );
-//	}
-
-	return BEANS_ADMIN_DOCUMENT_SETTING_PANEL_URL;
+function myprefix_register_meta() {
+register_meta('post', '_myprefix_text_metafield', array(
+	'show_in_rest' => true,
+	'type' => 'string',
+	'single' => true,
+));
 }
+add_action('init', 'myprefix_register_meta');
 
 
-
-// Enqueue JS and CSS
-include __DIR__ . '/lib/register-scripts.php';
-
-// Register block categories
-include __DIR__ . '/lib/block-categories.php';
-
-// Setup Global Block Setting Options Setting
-include __DIR__ . '/lib/wp-options.php';
-
-// Register REST API Endpoint
-include __DIR__ . '/lib/rest-api-endpoint.php';
-
-// Register blocks server side
-include __DIR__ . '/lib/register-blocks.php';
-
-// Register any PHP block filters
-include __DIR__ . '/lib/block-filters.php';
