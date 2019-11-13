@@ -194,3 +194,4 @@ final class _Beans_Post_Meta {
 		return ! empty( $fields );
 	}
 }
+

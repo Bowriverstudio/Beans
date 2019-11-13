@@ -48,6 +48,7 @@ function beans_get_default_layout() {
  */
 function beans_get_layout() {
 
+//d(beans_get_post_meta( 'beans_layout' ));
 	if ( is_singular() ) {
 		$layout = beans_get_post_meta( 'beans_layout' );
 	} elseif ( is_home() ) {
@@ -151,7 +152,6 @@ function beans_get_layouts_for_options( $add_default = false ) {
 		),
 		$layouts
 	);
-
 	return $layouts;
 }
 

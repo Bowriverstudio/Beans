@@ -49,6 +49,7 @@ function beans_define_constants() {
 
 	define( 'BEANS_URL', BEANS_THEME_URL . 'lib/' );
 	define( 'BEANS_API_URL', BEANS_URL . 'api/' );
+	define( 'BEANS_ADMIN_DOCUMENT_SETTING_PANEL_URL', BEANS_URL . 'admin/document-setting-panel/' );
 
 
 	// Define admin paths.
@@ -212,3 +213,27 @@ do_action( 'beans_before_init' );
  * @since 1.0.0
  */
 do_action( 'beans_after_init' );
+
+
+
+add_action('init', 'beans_temporary_register_meta');
+/**
+ * @TODO
+ * This callback needs to move to a better location in the beans framework.
+ */
+function beans_temporary_register_meta() {
+
+	register_meta('post', 'beans_layout', array(
+		'show_in_rest' => true,
+		'type' => 'string',
+		'single' => true,
+		'sanitize_callback' => 'sanitize_text_field',
+		'auth_callback' => function() {
+			return current_user_can('edit_posts');
+		}
+	));
+
+}
+
+
+

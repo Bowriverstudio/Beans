@@ -61,8 +61,13 @@ function beans_do_register_post_meta() {
 			'type'    => 'radio',
 			'default' => 'default_fallback',
 			'options' => beans_get_layouts_for_options( true ),
+			array('__back_compat_meta_box' => true)
+
 		),
 	);
 
-	beans_register_post_meta( $fields, array( 'post', 'page' ), 'tm-beans', array( 'title' => __( 'Post Options', 'tm-beans' ) ) );
+
+
+
+//	beans_register_post_meta( $fields, array( 'post', 'page' ), 'tm-beans', array( 'title' => __( 'Post Options', 'tm-beans' ) ) );
 }
