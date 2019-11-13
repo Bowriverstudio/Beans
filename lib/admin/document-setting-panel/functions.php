@@ -1,26 +1,27 @@
 <?php
+
 namespace Beans\Admin\Document_Settings_Panel;
 
-add_action( 'enqueue_block_editor_assets', __NAMESPACE__ .'\enqueue_assets' );
+add_action('enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_assets');
 /**
  * Enqueue the resources needed for Beans Sidebar.
  */
-function enqueue_assets() {
+function enqueue_assets(){
 
-	$asset_file = include(BEANS_ADMIN_PATH.'document-setting-panel/build/index.asset.php');
+	$asset_file = include(BEANS_ADMIN_PATH . 'document-setting-panel/build/index.asset.php');
 
 	wp_enqueue_script(
-		'myprefix-gutenberg-sidebar',
-		BEANS_ADMIN_DOCUMENT_SETTING_PANEL_URL .  'build/index.js',
+		'beans-gutenberg-sidebar',
+		BEANS_ADMIN_DOCUMENT_SETTING_PANEL_URL . 'build/index.js',
 		$asset_file['dependencies'],
 		$asset_file['version']
 	);
 
 	wp_enqueue_style(
-		'myprefix-gutenberg-sidebar-style',
-		BEANS_ADMIN_DOCUMENT_SETTING_PANEL_URL .  'build/style.css',
-	'',
-	filemtime( BEANS_ADMIN_PATH.'document-setting-panel/build/style.css' )
+		'beans-gutenberg-sidebar-style',
+		BEANS_ADMIN_DOCUMENT_SETTING_PANEL_URL . 'build/style.css',
+		'',
+		filemtime(BEANS_ADMIN_PATH . 'document-setting-panel/build/style.css')
 
 	);
 }
