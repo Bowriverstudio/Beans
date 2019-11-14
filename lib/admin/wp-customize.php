@@ -57,19 +57,20 @@ function beans_do_register_wp_customize_options() {
 				'id'      => 'beans_layout',
 				'label'   => __( 'Default Layout', 'tm-beans' ),
 				'type'    => 'radio',
-				'default' => beans_get_default_layout(),
+				'default' => 'c', //beans_get_default_layout(),
 				'options' => $options,
 			),
 		);
-
-		beans_register_wp_customize_options(
-			$fields,
-			'beans_layout',
-			array(
-				'title'    => __( 'Default Layout', 'tm-beans' ),
-				'priority' => 1000,
-			)
-		);
+// @TODO BUG - Adding this stops custimizer from rendering.
+//
+//		beans_register_wp_customize_options(
+//			$fields,
+//			'beans_layout',
+//			array(
+//				'title'    => __( 'Default Layout', 'tm-beans' ),
+//				'priority' => 1000,
+//			)
+//		);
 	}
 
 	$fields = array(
