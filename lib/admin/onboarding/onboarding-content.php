@@ -96,6 +96,7 @@ final class _Beans_Admin_Onboarding_Content
 
 				$post = wp_parse_args($post, $post_defaults);
 
+
 				$post_id = wp_insert_post($post);
 
 				if (is_wp_error($post_id)) {
@@ -118,6 +119,12 @@ final class _Beans_Admin_Onboarding_Content
 
 				if (!empty($post['page_template'])) {
 					update_post_meta($post_id, '_wp_page_template', sanitize_text_field($post['page_template']));
+				}
+
+				if(!empty($post['post_meta'])) {
+					foreach( $post['post_meta'] as $meta_key => $meta_value ){
+						add_post_meta($post_id, $meta_key, $meta_value);
+					}
 				}
 
 				if (!empty($post['featured_image'])) {

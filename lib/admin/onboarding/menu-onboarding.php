@@ -101,8 +101,6 @@ final class _Beans_Admin_Menu_Onboarding {
 
 			<input class="button-primary beans_onboard_childtheme"  value="Install" />
 
-
-
 		</div>
 		<?php
 	}
@@ -125,6 +123,9 @@ final class _Beans_Admin_Menu_Onboarding {
 		add_action('admin_notices', array( $this,'shapeSpace_custom_admin_notice'));
 
 		$response['type'] = 'success';
+
+		$content = new _Beans_Admin_Onboarding_Content();
+		$content->import_content();
 		$response['content'] = 'Message';
 
 		$response = json_encode( $response);
