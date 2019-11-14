@@ -1,6 +1,6 @@
 <?php
 
-use function StudioPress\Genesis\Admin\WidgetImport\get_next_widget_id;
+namespace Beans\Admin\Onboarding;
 
 /**
  * Beans admin page.
@@ -24,8 +24,8 @@ final class _Beans_Admin_Onboarding
 
 		//self::install_plugins();
 		self::onboarding_import_content();
-		self::onboarding_create_navigation_menu_items();
-		self::import_widgets();
+//		self::onboarding_create_navigation_menu_items();
+//		self::import_widgets();
 
 	}
 
@@ -93,7 +93,7 @@ final class _Beans_Admin_Onboarding
 	 * @since 2.9.0
 	 *
 	 */
-	private function onboarding_import_content()
+	public function onboarding_import_content()
 	{
 		$errors = [];
 
