@@ -29,9 +29,14 @@ function beans_define_constants() {
 	if ( ! defined( 'BEANS_THEME_PATH' ) ) {
 		define( 'BEANS_THEME_PATH', wp_normalize_path( trailingslashit( get_template_directory() ) ) );
 	}
+	// Define urls.
+	if ( ! defined( 'BEANS_THEME_URL' ) ) {
+		define( 'BEANS_THEME_URL', trailingslashit( get_template_directory_uri() ) );
+	}
+
+
 	define( 'CHILD_PATH', wp_normalize_path( trailingslashit( get_stylesheet_directory() ) ) );
-	define( 'CHILD_URL', get_stylesheet_directory_uri());
-	define( 'BEANS_THEME_URL', get_template_directory());
+	define( 'CHILD_URL',  trailingslashit(get_stylesheet_directory_uri()));
 
 	define( 'BEANS_PATH', BEANS_THEME_PATH . 'lib/' );
 	define( 'BEANS_API_PATH', BEANS_PATH . 'api/' );
@@ -45,10 +50,6 @@ function beans_define_constants() {
 		define( 'BEANS_FRAGMENTS_PATH', BEANS_TEMPLATES_PATH . 'fragments/' );
 	}
 
-	// Define urls.
-	if ( ! defined( 'BEANS_THEME_URL' ) ) {
-		define( 'BEANS_THEME_URL', trailingslashit( get_template_directory_uri() ) );
-	}
 
 
 
