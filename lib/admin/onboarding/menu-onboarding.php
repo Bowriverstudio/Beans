@@ -82,24 +82,19 @@ final class _Beans_Admin_Menu_Onboarding {
 			$content = new _Beans_Admin_Onboarding_Content();
 			$content->display();
 
+			$widgets = new _Beans_Admin_Onboarding_Widgets();
+			$widgets->display();
 			?>
 
-			<div>
-				<h3>Widget List</h3>
-				<?php
-				foreach ($onboarding->onboarding_widgets() as $key => $widget){
-					printf( '<div>%s %s</div>', __('Widget Slug:', 'tm-beans'), $key);
-				}
-				?>
-			</div>
+
 
 <br><br>
 
-<!--			<form  action="" method="POST">-->
-<!--				<input class="button-primary" type="submit" name="submit" value="Install" />-->
-<!--			</form>-->
+			<form  action="" method="POST">
+				<input class="button-primary" type="submit" name="submit" value="Install" />
+			</form>
 
-			<input class="button-primary beans_onboard_childtheme"  value="Install" />
+			<input type="submit" class="button-primary beans_onboard_childtheme"  value="Install" />
 
 		</div>
 		<?php
@@ -125,8 +120,11 @@ final class _Beans_Admin_Menu_Onboarding {
 		$response['type'] = 'success';
 
 		$content = new _Beans_Admin_Onboarding_Content();
-		$content->import_content();
-		$response['content'] = 'Message';
+//		$content->import_content();
+		$widgets = new _Beans_Admin_Onboarding_Widgets();
+		$widgets->import_widgets();
+
+		$response['content'] = 'Imported content / widgets and menus.';
 
 		$response = json_encode( $response);
 		echo $response;

@@ -16,6 +16,7 @@ require_once BEANS_ADMIN_PATH . '/onboarding/menu-onboarding.php';
 require_once BEANS_ADMIN_PATH . '/onboarding/onboarding.php';
 require_once BEANS_ADMIN_PATH . '/onboarding/onboarding-content.php';
 require_once BEANS_ADMIN_PATH . '/onboarding/onboarding-plugins.php';
+require_once BEANS_ADMIN_PATH . '/onboarding/onboarding-widgets.php';
 //		require_once BEANS_ADMIN_PATH . '/onboarding/Beans_Silent_Upgrader_Skin.php';
 
 /**
