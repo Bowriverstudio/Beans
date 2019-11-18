@@ -26,13 +26,11 @@ final class _Beans_Onboarding_Admin_Page
 	 */
 	public function __construct()
 	{
-		add_action('admin_menu', array($this, 'admin_menu'), 150);
-
-// Change 'wp_ajax_your_hook' to 'wp_ajax_jsforwp_add_like'
-// Or change to 'wp_ajax_nopriv_your_hook' to 'wp_ajax_nopriv_jsforwp_add_like'
-// Change 'your_hook' to 'jsforwp_add_like'
-		add_action('wp_ajax_beans_onboard_childtheme', array($this, 'beans_onboard_childtheme'));
-		add_action('wp_ajax_nopriv_beans_onboard_childtheme', array($this, 'beans_onboard_childtheme'));
+		if(_beans_onboarding_config() ){
+			add_action('admin_menu', array($this, 'admin_menu'), 150);
+			add_action('wp_ajax_beans_onboard_childtheme', array($this, 'beans_onboard_childtheme'));
+			add_action('wp_ajax_nopriv_beans_onboard_childtheme', array($this, 'beans_onboard_childtheme'));
+		}
 	}
 
 	/**

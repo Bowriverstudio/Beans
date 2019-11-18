@@ -9,7 +9,7 @@
 
 namespace Beans\Admin\Onboarding;
 
-//require_once BEANS_ADMIN_PATH . 'onboarding/theme-activation.php';
+require_once BEANS_ADMIN_PATH . 'onboarding/theme-activation.php';
 
 require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-admin-page.php';
 require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-content.php';
