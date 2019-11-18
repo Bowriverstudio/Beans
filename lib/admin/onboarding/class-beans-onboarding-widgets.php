@@ -36,8 +36,8 @@ final class _Beans_Admin_Onboarding_Widgets
 	 */
 	public function display()
 	{
-		__( '<h3>Widget List</h3>');
-		__( '<p>Will import widgets into the defined widget areas.</p>');
+		echo __( '<h3>Widget List</h3>');
+		echo __( '<p>Will import widgets into the defined widget areas.</p>');
 		printf( '<p>There is a total of %s widget areas defined for importing.</p>', sizeof(self::onboarding_widgets()));
 	}
 

@@ -41,22 +41,12 @@ final class _Beans_Onboarding_Content
 		?>
 		<div>
 			<h3>Theme Content</h3>
-			<p>Will create a new page / post - your original content will remain</p>
-			<table>
-				<tr>
-					<th></th>
-					<th>Plugin</th>
-					<th>Description</th>
-					<th>Install</th>
-				</tr>
-
 				<?php
 				$content = self::onboarding_content();
 				// TODO Disenel - Change hardcode child theme name.
-				printf(esc_html__('There is a total of %1$s posts / pages to be imported from the %2$s onboarding configuration file', 'tm-beans'), sizeof($content), 'CHILD THEME NAME');
+				printf(__('<p>There is a total of %1$s posts / pages to be imported from the %2$s onboarding configuration file</p>', 'tm-beans'), sizeof($content), 'CHILD THEME NAME');
 
 				?>
-			</table>
 		</div>
 		<?php
 	}
