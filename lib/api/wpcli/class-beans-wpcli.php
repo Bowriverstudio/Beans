@@ -15,6 +15,38 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 	{
 
 		/**
+		 * Show current Beans Development Mode status
+		 *
+		 * ## EXAMPLES
+		 *
+		 *  $ wp beans dev_mode
+		 *  $ wp beans dev_mode --activate
+		 *  $ wp beans dev_mode --deactivate
+		 *  2.9.1
+		 *
+		 * @subcommand dev_mode
+		 *
+		 * @since 2.10.0
+		 *
+		 * @param array $args       Positional arguments.
+		 * @param array $assoc_args Stores all the arguments defined like --key=value or --flag or --no-flag.
+		 */
+		public function debug( $args, $assoc_args ) {
+
+			if( $assoc_args && key_exists('activate', $assoc_args)){
+				update_option('beans_dev_mode', true);
+			} else if ( $assoc_args && key_exists('deactivate', $assoc_args)){
+				update_option('beans_dev_mode', false);
+			}
+			$status = (get_option('beans_dev_mode') ? 'On' : 'Off');
+			WP_CLI::success( 'Beans Development mode is: '. $status );
+			WP_CLI::log( 'To turn off Beans Development Mode - Run' );
+			WP_CLI::log( 'wp beans dev_mode --deactivate' );
+			WP_CLI::log( 'To turn on Beans Development Mode - Run' );
+			WP_CLI::log( 'wp beans dev_mode --activate' );
+		}
+
+		/**
 		 * Show commonly used Beans Constants
 		 *
 		 * ## Constants
