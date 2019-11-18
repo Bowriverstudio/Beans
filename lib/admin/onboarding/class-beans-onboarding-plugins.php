@@ -1,25 +1,30 @@
 <?php
 /**
- * This class build the Beans admin page.
+ * This class handles the onboarding related to the plugins.
  *
- * @package Beans\Framework\API
+ * @package Beans\Framework\Admin\Onboarding
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 
 /**
  * Beans admin page.
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @ignore
  * @access  private
  *
- * @package Beans\Framework\API
+ * @package Beans\Framework\Admin\Onboarding
  */
 namespace Beans\Admin\Onboarding;
 
 final class _Beans_Admin_Onboarding_Plugin
 {
+
+	public function onboarding_plugins() {
+		$config = _beans_onboarding_config();
+		return isset($config['dependencies']['plugins']) ? (array)$config['dependencies']['plugins'] : [];
+	}
 
 
 	/**
@@ -32,13 +37,11 @@ final class _Beans_Admin_Onboarding_Plugin
 	public function display()
 	{
 
-		$onboarding = new _Beans_Admin_Onboarding();
 
 		?>
 		<div>
 			<h3>Theme's Required Plugins</h3>
-			<p>Will be automatically installed. Once the required plugins are in the wordpress repository this
-				functionality will be updated.</p>
+			<p>Please install these manually.  Plugins in roadmap will be automatically installed. This requires some plugins to be installed in the offical wordpres repo.</p>
 			<table>
 				<tr>
 					<th></th>
@@ -48,7 +51,8 @@ final class _Beans_Admin_Onboarding_Plugin
 				</tr>
 
 				<?php
-				foreach ($onboarding->onboarding_plugins() as $plugin):
+				$plugins = self::onboarding_plugins();
+				foreach ($plugins as $plugin):
 					?>
 					<tr>
 						<td>

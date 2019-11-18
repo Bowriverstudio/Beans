@@ -1,10 +1,10 @@
 <?php
 /**
- * This class build the Beans admin page.
+ * This class handles the widgets onboarding.
  *
- * @package Beans\Framework\API
+ * @package Beans\Framework\Admin\Onboarding
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 
 /**
@@ -14,7 +14,7 @@
  * @ignore
  * @access  private
  *
- * @package Beans\Framework\API
+ * @package Beans\Framework\Admin\Onboarding
  */
 namespace Beans\Admin\Onboarding;
 

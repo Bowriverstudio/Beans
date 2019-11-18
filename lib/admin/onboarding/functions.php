@@ -10,13 +10,12 @@
 namespace Beans\Admin\Onboarding;
 
 //require_once BEANS_ADMIN_PATH . 'onboarding/theme-activation.php';
-//require_once BEANS_ADMIN_PATH . 'onboarding/ajax-functions.php';
-//		require_once $functions_dir . 'onboarding.php';
-require_once BEANS_ADMIN_PATH . '/onboarding/menu-onboarding.php';
-require_once BEANS_ADMIN_PATH . '/onboarding/onboarding.php';
-require_once BEANS_ADMIN_PATH . '/onboarding/onboarding-content.php';
-require_once BEANS_ADMIN_PATH . '/onboarding/onboarding-plugins.php';
-require_once BEANS_ADMIN_PATH . '/onboarding/onboarding-widgets.php';
+
+require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-pluginsa-admin-page.php';
+require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-content.php';
+require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-plugins.php';
+require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-navigation.php';
+require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-widgets.php';
 //		require_once BEANS_ADMIN_PATH . '/onboarding/Beans_Silent_Upgrader_Skin.php';
 
 /**
@@ -27,8 +26,7 @@ require_once BEANS_ADMIN_PATH . '/onboarding/onboarding-widgets.php';
  * @since 2.0.0
  *
  */
-function _beans_onboarding_config()
-{
+function _beans_onboarding_config(){
 	return beans_get_config('onboarding');
 }
 
@@ -56,7 +54,7 @@ function enqueue_script() {
 		]
 	);
 
-
+	// TODO BEANS_VERSION instead of time once completed.
 	wp_enqueue_style(
 		'beans-admin-css',
 		BEANS_ADMIN_ASSETS_URL . 'css/admin.css','',time()

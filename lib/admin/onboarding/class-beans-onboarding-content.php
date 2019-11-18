@@ -2,23 +2,23 @@
 /**
  * This class build the Beans admin page.
  *
- * @package Beans\Framework\API
+ * @package Beans\Framework\Admin\Onboarding
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 
 /**
  * Beans admin page.
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @ignore
  * @access  private
  *
- * @package Beans\Framework\API
+ * @package Beans\Framework\Admin\Onboarding
  */
 namespace Beans\Admin\Onboarding;
 
-final class _Beans_Admin_Onboarding_Content
+final class _Beans_Onboarding_Content
 {
 	public function onboarding_content()
 	{

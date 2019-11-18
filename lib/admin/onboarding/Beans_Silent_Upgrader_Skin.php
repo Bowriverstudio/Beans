@@ -4,7 +4,7 @@
  *
  * Copy from Genesis.
  *
- * @package Beans\Framework
+ * @package Beans\Framework\Admin\Onboarding
  * @author  StudioPress
  * @license GPL-2.0-or-later
  */
