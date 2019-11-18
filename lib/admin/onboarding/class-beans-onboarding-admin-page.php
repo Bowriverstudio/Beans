@@ -83,7 +83,13 @@ final class _Beans_Onboarding_Admin_Page
 			?>
 			<br>
 			<br>
-			<input type="submit" class="button-primary beans_onboard_childtheme"  value="Install" />
+
+			<?php if( $plugins->can_onboard()):?>
+				<input type="submit" class="button-primary beans_onboard_childtheme"  value="Install" />
+			<?php else: ?>
+				<p>Must install required plugins first</p>
+				<input type="submit" class="button-primary beans_onboard_childtheme"  disabled="true" value="Install" />
+			<?php endif;?>
 
 		</div>
 		<?php

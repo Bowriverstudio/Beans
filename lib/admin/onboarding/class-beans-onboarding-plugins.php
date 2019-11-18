@@ -47,6 +47,7 @@ final class _Beans_Admin_Onboarding_Plugin
 					<th></th>
 					<th>Plugin</th>
 					<th>Description</th>
+					<th>Required</th>
 					<th>Install</th>
 					<th></th>
 				</tr>
@@ -65,6 +66,7 @@ final class _Beans_Admin_Onboarding_Plugin
 						<?php } ?>
 						<td><?php echo $plugin['name'] ?></td>
 						<td><?php echo $plugin['description'] ?></td>
+						<td><?php echo ($plugin['required'] ? 'Yes' : 'No'); ?></td>
 						<td><?php if (is_plugin_active($plugin['slug'])): ?>
 								<span class="dashicons dashicons-yes-alt"></span>
 							<?php else : ?>
@@ -82,6 +84,19 @@ final class _Beans_Admin_Onboarding_Plugin
 			</table>
 		</div>
 		<?php
+	}
+
+
+	public function can_onboard(){
+		$can_onboard = true;
+		$plugins = self::onboarding_plugins();
+		foreach ($plugins as $plugin){
+			if( ! is_plugin_active($plugin['slug']) && $plugin['required']){
+				$can_onboard = false;
+				continue;
+			}
+		}
+		return $can_onboard;
 	}
 
 
