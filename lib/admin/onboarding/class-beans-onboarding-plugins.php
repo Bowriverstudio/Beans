@@ -48,6 +48,7 @@ final class _Beans_Admin_Onboarding_Plugin
 					<th>Plugin</th>
 					<th>Description</th>
 					<th>Install</th>
+					<th></th>
 				</tr>
 
 				<?php
@@ -65,9 +66,13 @@ final class _Beans_Admin_Onboarding_Plugin
 						<td><?php echo $plugin['name'] ?></td>
 						<td><?php echo $plugin['description'] ?></td>
 						<td><?php if (is_plugin_active($plugin['slug'])): ?>
-								Installed
+								<span class="dashicons dashicons-yes-alt"></span>
 							<?php else : ?>
-								<?php echo 'Not installed: ' . $plugin['install'] ?>
+								<span class="dashicons dashicons-no-alt"></span>
+							<?php endif; ?>
+						</td>
+						<td><?php if (!is_plugin_active($plugin['slug'])): ?>
+								<?php echo $plugin['install'] ?>
 							<?php endif; ?>
 						</td>
 					</tr>
