@@ -83,6 +83,8 @@ final class _Beans_Onboarding_Admin_Page
 			?>
 			<br>
 			<br>
+			<input type="submit" class="button-primary beans_onboard_childtheme"  value="Install" />
+
 		</div>
 		<?php
 	}
