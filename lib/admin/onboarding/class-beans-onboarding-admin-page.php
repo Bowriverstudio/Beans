@@ -113,13 +113,7 @@ final class _Beans_Onboarding_Admin_Page
 
 		$response['type'] = 'success';
 
-//		$content = new _Beans_Onboarding_Content();
-//		$content->import_content();
-//		$widgets = new _Beans_Admin_Onboarding_Widgets();
-//		$widgets->import_widgets();
-
-		$navigation = new _Beans_Admin_Onboarding_Navigation();
-		$navigation->create_navigation_menu_items();
+		_beans_onboard();
 
 		$response['content'] = 'Imported content / widgets and menus.';
 

@@ -30,6 +30,17 @@ function _beans_onboarding_config(){
 	return beans_get_config('onboarding');
 }
 
+function _beans_onboard(){
+	$content = new _Beans_Onboarding_Content();
+	$content->import_content();
+	$widgets = new _Beans_Admin_Onboarding_Widgets();
+	$widgets->import_widgets();
+
+	$navigation = new _Beans_Admin_Onboarding_Navigation();
+	$navigation->create_navigation_menu_items();
+
+}
+
 
 add_action('admin_enqueue_scripts', __NAMESPACE__ . '\enqueue_script');
 /**
