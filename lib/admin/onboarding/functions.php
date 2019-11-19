@@ -13,8 +13,9 @@ require_once BEANS_ADMIN_PATH . 'onboarding/theme-activation.php';
 
 require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-admin-page.php';
 require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-content.php';
-require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-plugins.php';
 require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-navigation.php';
+require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-plugins.php';
+require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-theme-mod.php';
 require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-widgets.php';
 //		require_once BEANS_ADMIN_PATH . '/onboarding/Beans_Silent_Upgrader_Skin.php';
 
@@ -39,6 +40,8 @@ function _beans_onboard(){
 	$navigation = new _Beans_Admin_Onboarding_Navigation();
 	$navigation->create_navigation_menu_items();
 
+	$theme_mods = new _Beans_Admin_Onboarding_Theme_Mod();
+	$theme_mods->import();
 }
 
 

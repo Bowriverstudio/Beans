@@ -78,6 +78,9 @@ final class _Beans_Onboarding_Admin_Page
 
 			$navigation = new _Beans_Admin_Onboarding_Navigation();
 			$navigation->display();
+
+			$class = new _Beans_Admin_Onboarding_Theme_Mod();
+			$class->display();
 			?>
 			<br>
 			<br>
