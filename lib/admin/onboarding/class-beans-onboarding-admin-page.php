@@ -81,6 +81,9 @@ final class _Beans_Onboarding_Admin_Page
 
 			$class = new _Beans_Admin_Onboarding_Theme_Mod();
 			$class->display();
+
+			$class = new _Beans_Admin_Onboarding_Options();
+			$class->display();
 			?>
 			<br>
 			<br>
