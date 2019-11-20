@@ -46,6 +46,8 @@ function _beans_onboard(){
 
 	$options = new _Beans_Admin_Onboarding_Options();
 	$options->import();
+
+	flush_rewrite_rules(true);
 }
 
 
