@@ -73,6 +73,33 @@ function beans_do_register_wp_customize_options() {
 //		);
 	}
 
+	// Display full content or excerpts on the blog and archives ---------
+	// Copied from Theme 2020
+
+	$fields = array(
+		array(
+			'id'      => 'blog_content',
+			'label'   => __( 'On archive pages, posts show:', 'tm-beans' ),
+			'type'    => 'radio',
+			'default' => 'full',
+			'choices'  => array(
+				'full'    => __( 'Full text', 'twentytwenty' ),
+				'summary' => __( 'Summary', 'twentytwenty' ),
+			),
+		),
+	);
+	beans_register_wp_customize_options(
+		$fields,
+		'theme_options',
+		array(
+			'title'    => __( 'Theme Optionsa', 'tm-beans' ),
+			'priority' => 1010,
+		)
+	);
+
+
+
+
 	$fields = array(
 		array(
 			'id'          => 'beans_viewport_width_group',
