@@ -39,16 +39,20 @@ namespace {
 			public function dev_mode($args, $assoc_args)
 			{
 				if ($assoc_args && key_exists('activate', $assoc_args)) {
+					WP_CLI::log('Activating Beans Dev Mode');
 					update_option('beans_dev_mode', true);
 				} else if ($assoc_args && key_exists('deactivate', $assoc_args)) {
+					WP_CLI::log('Deactivating Beans Dev Mode');
 					update_option('beans_dev_mode', false);
+				} else {
+					WP_CLI::log('To turn off Beans Development Mode - Run');
+					WP_CLI::log('wp beans dev_mode --deactivate');
+					WP_CLI::log('To turn on Beans Development Mode - Run');
+					WP_CLI::log('wp beans dev_mode --activate');
 				}
+
 				$status = (get_option('beans_dev_mode') ? 'On' : 'Off');
 				WP_CLI::success('Beans Development mode is: ' . $status);
-				WP_CLI::log('To turn off Beans Development Mode - Run');
-				WP_CLI::log('wp beans dev_mode --deactivate');
-				WP_CLI::log('To turn on Beans Development Mode - Run');
-				WP_CLI::log('wp beans dev_mode --activate');
 			}
 
 			/**
@@ -116,6 +120,15 @@ namespace {
 						'Constant' => 'BEANS_FRONTEND_FRAMEWORK',
 						'Value' => BEANS_FRONTEND_FRAMEWORK,
 					),
+					array(
+						'Constant' => 'ONBOARDING_CONTENT_PATH',
+						'Value' => ONBOARDING_CONTENT_PATH,
+					),					array(
+						'Constant' => 'ONBOARDING_IMAGE_URL',
+						'Value' => ONBOARDING_IMAGE_URL,
+					),
+
+
 
 				);
 				WP_CLI\Utils\format_items('table', $items, $fields);
