@@ -60,6 +60,10 @@ function beans_get_layout() {
 		$layout = beans_get_term_meta( 'beans_layout' );
 	}
 
+	// When the layout is not found or is set to "default_fallback", use the theme's default layout.
+	if ( ! isset( $layout ) || ! $layout || 'default_fallback' === $layout ) {
+		$layout = get_theme_mod( 'beans_layout', beans_get_default_layout() );
+	}
 
 	/**
 	 * Filter the web page's layout ID.

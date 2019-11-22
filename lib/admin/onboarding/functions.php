@@ -12,6 +12,7 @@ namespace Beans\Admin\Onboarding;
 require_once BEANS_ADMIN_PATH . 'onboarding/theme-activation.php';
 
 require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-admin-page.php';
+require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-category.php';
 require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-content.php';
 require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-navigation.php';
 require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-options.php';
@@ -33,19 +34,24 @@ function _beans_onboarding_config(){
 }
 
 function _beans_onboard(){
-	$content = new _Beans_Onboarding_Content();
-	$content->import_content();
-	$widgets = new _Beans_Admin_Onboarding_Widgets();
-	$widgets->import_widgets();
 
-	$navigation = new _Beans_Admin_Onboarding_Navigation();
-	$navigation->create_navigation_menu_items();
+	$onboard = new _Beans_Onboarding_Category();
+	$onboard->import();
 
-	$theme_mods = new _Beans_Admin_Onboarding_Theme_Mod();
-	$theme_mods->import();
+	$onboard = new _Beans_Onboarding_Content();
+	$onboard->import_content();
 
-	$options = new _Beans_Admin_Onboarding_Options();
-	$options->import();
+	$onboard = new _Beans_Admin_Onboarding_Widgets();
+	$onboard->import_widgets();
+
+	$onboard = new _Beans_Admin_Onboarding_Navigation();
+	$onboard->create_navigation_menu_items();
+
+	$onboard = new _Beans_Admin_Onboarding_Theme_Mod();
+	$onboard->import();
+
+	$onboard = new _Beans_Admin_Onboarding_Options();
+	$onboard->import();
 
 	flush_rewrite_rules(true);
 }
@@ -79,6 +85,9 @@ function enqueue_script() {
 		'beans-admin-css',
 		BEANS_ADMIN_ASSETS_URL . 'css/admin.css','',time()
 	);
+
+//	wp_enqueue_style('thickbox');
+//	wp_enqueue_script('thickbox');
 }
 
 

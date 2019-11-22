@@ -86,6 +86,13 @@ final class _Beans_Onboarding_Content
 
 				$post = wp_parse_args($post, $post_defaults);
 
+				if(array_key_exists('post_category',  $post)){
+					$category_ids = array();
+					foreach( $post['post_category'] as $category_slug){
+						$category_ids[] = get_category_by_slug($category_slug)->term_id;
+					}
+					$post['post_category'] = $category_ids;
+				}
 
 				$post_id = wp_insert_post($post);
 
@@ -158,8 +165,14 @@ final class _Beans_Onboarding_Content
 						unlink($local_image_path);
 					}
 
+//					$term_id = get_term_by('slug', 'beans-2-0', 'category');
+
+//					wp_set_object_terms( $post_id, $term_id, 'category' );
+//wp_set_post_categories
 				}
 			}
+
+
 
 			/**
 			 * Fire after content is imported.
