@@ -55,12 +55,12 @@ final class _Beans_Onboarding_Content
 	/**
 	 * Imports the demo content during onboarding.
 	 *
-	 * @param array $content The content config array.
+	 * @param boolean $overwrite Does the
 	 * @return array
 	 * @since 2.9.0
 	 *
 	 */
-	public function import_content()
+	public function import_content($overwrite = false)
 	{
 		$errors = [];
 
@@ -86,6 +86,7 @@ final class _Beans_Onboarding_Content
 
 				$post = wp_parse_args($post, $post_defaults);
 
+				// Adds post to category
 				if(array_key_exists('post_category',  $post)){
 					$category_ids = array();
 					foreach( $post['post_category'] as $category_slug){
@@ -94,7 +95,25 @@ final class _Beans_Onboarding_Content
 					$post['post_category'] = $category_ids;
 				}
 
-				$post_id = wp_insert_post($post);
+				$post_id = false;
+				if( $overwrite ){
+					$slug =  sanitize_title_with_dashes( $post['post_title'] );
+					$posts = get_posts(array(
+						'name' => $slug,
+						'posts_per_page' => 1,
+						'post_type' => $post['post_type'],
+					));
+					if( is_array( $posts) && sizeof($posts) == 1 ){
+						// Update Post instead of inserting it.
+						$post['ID'] = $posts[0]->ID;
+						$post_id = $post['ID'];
+						wp_update_post( $post );
+					}
+				}
+
+				if( ! $post_id ){
+					$post_id = wp_insert_post($post);
+				}
 
 				if (is_wp_error($post_id)) {
 					/* translators: 1: Title of the page, 2: The error message. */
@@ -165,10 +184,7 @@ final class _Beans_Onboarding_Content
 						unlink($local_image_path);
 					}
 
-//					$term_id = get_term_by('slug', 'beans-2-0', 'category');
 
-//					wp_set_object_terms( $post_id, $term_id, 'category' );
-//wp_set_post_categories
 				}
 			}
 

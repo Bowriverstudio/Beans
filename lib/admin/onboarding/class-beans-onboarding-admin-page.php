@@ -64,7 +64,7 @@ final class _Beans_Onboarding_Admin_Page
 			<p>This functionality is still being developed. </p>
 			<h2>Title: <?php echo esc_html(self::display_title()) ?></h2>
 			<!-- TODO Disnel - fix the display image - add a default image (anything you like) this is missing -->
-			<div class="beans-screenshot"><img src="<?php echo self::display_image() ?>"/></div>
+<!--			<div class="beans-screenshot"><img src="--><?php //echo self::display_image() ?><!--"/></div>-->
 
 			<?php
 			$plugins = new _Beans_Admin_Onboarding_Plugin();
@@ -88,12 +88,25 @@ final class _Beans_Onboarding_Admin_Page
 			<br>
 			<br>
 
+
+			<div id="confirmPopup" class="confirmPopup" style="display:none">
+				<h2>Pressing Install will overall all pages and posts.  It will also clear any navigation.</h2>
+				<input type="submit" class="button-primary beans_onboard_childtheme"  onboarding_overwrite="true" value="overwrite" />
+			</div>
+
+			<div style="text-align:center;padding:20px 0;">
+
 			<?php if( $plugins->can_onboard()):?>
 				<input type="submit" class="button-primary beans_onboard_childtheme"  value="Install" />
+<!--					<input  alt="#TB_inline?height=300&amp;width=400&amp;inlineId=confirmPopup"-->
+<!--							class="button-primary thickbox"-->
+<!--							type="button" value="Overwrite all content and import." />-->
+
 			<?php else: ?>
 				<p>Must install required plugins first</p>
 				<input type="submit" class="button-primary beans_onboard_childtheme"  disabled="true" value="Install" />
 			<?php endif;?>
+			</div>
 
 		</div>
 		<?php
@@ -119,7 +132,7 @@ final class _Beans_Onboarding_Admin_Page
 
 		$response['type'] = 'success';
 
-		_beans_onboard();
+		_beans_onboard($_POST['onboarding_overwrite']);
 
 		$response['content'] = 'Imported content / widgets and menus.';
 

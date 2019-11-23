@@ -9,7 +9,6 @@
 namespace {
 
 	use function Beans\Admin\Onboarding\_beans_onboard;
-	use function foo\func;
 
 
 	if (defined('WP_CLI') && WP_CLI) {
@@ -17,7 +16,7 @@ namespace {
 		/**
 		 * Manage Beans Framework via cli.
 		 */
-		class Beans_WPCLI
+		class Beans_WP_CLI
 		{
 
 			/**
@@ -58,10 +57,12 @@ namespace {
 			/**
 			 * Imports content from onboarding.
 			 *
+			 * Overwrite - allows forces posts and pages to be overwritten if exists.
+			 *
 			 * ## EXAMPLES
 			 *
 			 *  $ wp beans onboard
-			 *
+			 *  $ wp beans onboard --overwrite
 			 * @subcommand onboard
 			 *
 			 * @param array $args Positional arguments.
@@ -73,7 +74,14 @@ namespace {
 			{
 				require_once BEANS_ADMIN_PATH . 'onboarding/functions.php';
 
-				Beans\Admin\Onboarding\_beans_onboard();
+				$overwrite = false;
+				if ($assoc_args && key_exists('overwrite', $assoc_args)) {
+					$overwrite = true;
+				}
+//				$onboard = new Beans\Admin\Onboarding\_Beans_Onboarding_Content();
+//				$onboard->import_content($overwrite);
+
+				Beans\Admin\Onboarding\_beans_onboard($overwrite);
 				WP_CLI::success( 'Onboarded Content' );
 			}
 
@@ -138,7 +146,7 @@ namespace {
 
 		}
 
-		WP_CLI::add_command('beans', 'Beans_WPCLI');
+		WP_CLI::add_command('beans', 'Beans_WP_CLI');
 
 	}
 }

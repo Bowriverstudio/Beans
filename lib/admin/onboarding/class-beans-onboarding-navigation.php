@@ -67,6 +67,20 @@ final class _Beans_Admin_Onboarding_Navigation
 
 	}
 
+	public function delete_onboarding_menus(){
+		d(get_nav_menu_locations());
+		$menus_config   = self::navigation_menus();
+		foreach ( $menus_config as $menu_location => $menu_location_config ) {
+			d($menu_location);
+					$menu = get_term( $menu_location );
+
+			$menu = wp_get_nav_menu_object( $menu_location );
+			d($menu);
+			wp_delete_nav_menu($menu_location);
+		}
+
+	}
+
 	/**
 	 * Creates the navigation menu items based on the configuration
 	 * provided in the child theme.

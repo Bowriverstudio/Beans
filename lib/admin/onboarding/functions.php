@@ -33,13 +33,17 @@ function _beans_onboarding_config(){
 	return beans_get_config('onboarding');
 }
 
-function _beans_onboard(){
+
+/**
+ * Inserts the onboarding data.
+ */
+function _beans_onboard($overwrite = false){
 
 	$onboard = new _Beans_Onboarding_Category();
 	$onboard->import();
 
 	$onboard = new _Beans_Onboarding_Content();
-	$onboard->import_content();
+	$onboard->import_content($overwrite);
 
 	$onboard = new _Beans_Admin_Onboarding_Widgets();
 	$onboard->import_widgets();
@@ -86,8 +90,8 @@ function enqueue_script() {
 		BEANS_ADMIN_ASSETS_URL . 'css/admin.css','',time()
 	);
 
-//	wp_enqueue_style('thickbox');
-//	wp_enqueue_script('thickbox');
+	wp_enqueue_style('thickbox');
+	wp_enqueue_script('thickbox');
 }
 
 

@@ -20,12 +20,14 @@
 /**
  * Get the default layout ID.
  *
+ * @updated 2.0.0 - Add Elvis operator to respect config beans_layout default value.
  * @since 1.0.0
+ *
  *
  * @return string
  */
 function beans_get_default_layout() {
-	$default_layout = beans_has_widget_area( 'sidebar_primary' ) ? 'c_sp' : 'c';
+	$default_layout = beans_get_customizer_default_value('beans_layout') ?: (beans_has_widget_area( 'sidebar_primary' ) ? 'c_sp' : 'c');
 
 	/**
 	 * Filter the default layout ID.
