@@ -144,7 +144,8 @@ function beans_add_theme_support() {
 	add_theme_support( 'align-wide' );
 	add_theme_support( 'editor-styles' );
 
-	// Enqueue editor styles.
+	// Adds support for editor font sizes.
+	// Adds support for editor color palette.
 	if ( is_admin() ) {
 		$block_editor_settings = beans_get_config( 'block-editor-settings' );
 		foreach ( $block_editor_settings as $key => $value ) {
@@ -155,28 +156,6 @@ function beans_add_theme_support() {
 	// Beans specific.
 	add_theme_support( 'offcanvas-menu' );
 	add_theme_support( 'beans-default-styling' );
-
-	if( is_admin() ){
-		$gutenberg_appearance = beans_get_config('gutenberg-color-fonts');
-
-		// Adds support for editor font sizes.
-		if( array_key_exists('editor-font-sizes', $gutenberg_appearance)){
-			add_theme_support(
-				'editor-font-sizes',
-				$gutenberg_appearance['editor-font-sizes']
-			);
-		}
-
-
-		// Adds support for editor color palette.
-		if( array_key_exists('editor-color-palette', $gutenberg_appearance)){
-			add_theme_support(
-				'editor-color-palette',
-				$gutenberg_appearance['editor-color-palette']
-			);
-		}
-
-	}
 
 }
 
