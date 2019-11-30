@@ -47,6 +47,7 @@ final class _Beans_Post_Meta {
 
 		$this->section = $section;
 		$this->args    = array_merge( $defaults, $args );
+
 		$this->do_once();
 
 		add_action( 'add_meta_boxes', array( $this, 'register_metabox' ) );
@@ -100,7 +101,8 @@ final class _Beans_Post_Meta {
 			array( $this, 'render_metabox_content' ),
 			$post_type,
 			$this->args['context'],
-			$this->args['priority']
+			$this->args['priority'],
+			array('__back_compat_meta_box' => true)
 		);
 	}
 
@@ -192,3 +194,4 @@ final class _Beans_Post_Meta {
 		return ! empty( $fields );
 	}
 }
+

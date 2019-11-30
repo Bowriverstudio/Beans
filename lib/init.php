@@ -25,10 +25,19 @@ function beans_define_constants() {
 
 
 
-	// Define paths.
+	// Define paths and urls constants
 	if ( ! defined( 'BEANS_THEME_PATH' ) ) {
 		define( 'BEANS_THEME_PATH', wp_normalize_path( trailingslashit( get_template_directory() ) ) );
 	}
+	// Define urls.
+	if ( ! defined( 'BEANS_THEME_URL' ) ) {
+		define( 'BEANS_THEME_URL', trailingslashit( get_template_directory_uri() ) );
+	}
+
+	define( 'CHILD_PATH', wp_normalize_path( trailingslashit( get_stylesheet_directory() ) ) );
+	define( 'CHILD_URL',  trailingslashit(get_stylesheet_directory_uri()));
+	define( 'ONBOARDING_CONTENT_PATH', wp_normalize_path( trailingslashit( get_stylesheet_directory() . '/config/import/content' ) ) );
+	define( 'ONBOARDING_IMAGE_URL',  trailingslashit(get_stylesheet_directory_uri() .'/config/import/images'));
 
 	define( 'BEANS_PATH', BEANS_THEME_PATH . 'lib/' );
 	define( 'BEANS_API_PATH', BEANS_PATH . 'api/' );
@@ -42,13 +51,14 @@ function beans_define_constants() {
 		define( 'BEANS_FRAGMENTS_PATH', BEANS_TEMPLATES_PATH . 'fragments/' );
 	}
 
-	// Define urls.
-	if ( ! defined( 'BEANS_THEME_URL' ) ) {
-		define( 'BEANS_THEME_URL', trailingslashit( get_template_directory_uri() ) );
-	}
+
+
+
 
 	define( 'BEANS_URL', BEANS_THEME_URL . 'lib/' );
 	define( 'BEANS_API_URL', BEANS_URL . 'api/' );
+	// TODO REMOVE
+	define( 'BEANS_ADMIN_DOCUMENT_SETTING_PANEL_URL', BEANS_URL . 'admin/document-setting-panel/' );
 
 
 	// Define admin paths.
@@ -86,6 +96,7 @@ function beans_load_dependencies() {
 			'template',
 			'layout',
 			'widget',
+			'wp-cli'
 		)
 	);
 
@@ -134,7 +145,8 @@ function beans_add_theme_support() {
 	add_theme_support( 'align-wide' );
 	add_theme_support( 'editor-styles' );
 
-	// Enqueue editor styles.
+	// Adds support for editor font sizes.
+	// Adds support for editor color palette.
 	if ( is_admin() ) {
 		$block_editor_settings = beans_get_config( 'block-editor-settings' );
 		foreach ( $block_editor_settings as $key => $value ) {
@@ -145,6 +157,7 @@ function beans_add_theme_support() {
 	// Beans specific.
 	add_theme_support( 'offcanvas-menu' );
 	add_theme_support( 'beans-default-styling' );
+
 }
 
 add_action( 'beans_init', 'beans_includes' );
@@ -166,7 +179,8 @@ function beans_includes() {
 		require_once BEANS_ADMIN_PATH . 'updater.php';
 		require_once BEANS_ADMIN_PATH . 'use-child-theme.php';
 		require_once BEANS_ADMIN_PATH . 'onboarding/functions.php';
-
+//		require_once BEANS_ADMIN_PATH . 'document-setting-panel/functions.php';
+		require_once BEANS_ADMIN_PATH . 'editor/sidebar/functions.php';
 	}
 
 	// Include customizer.
@@ -212,3 +226,7 @@ do_action( 'beans_before_init' );
  * @since 1.0.0
  */
 do_action( 'beans_after_init' );
+
+
+
+

@@ -42,3 +42,41 @@ function beans_get_post_meta( $meta_key, $default = false, $post_id = '' ) {
 
 	return $default;
 }
+
+add_action('init', 'beans_register_block_post_meta');
+/**
+ * Temporary here - will use beans_register_post_meta function.
+ *
+ * Register post meta for Bean's Block Editor features.
+ *
+ * Meta must be registered to allow getting and setting via the REST API.
+ *
+ * Protecting fields by prefixing them with an underscore prevents them from
+ * appearing in the Custom Fields meta box, where they would override changes
+ * to the Block Editor Redux store.
+ *
+ * Passing '__return_true' for `auth_callback` allows the field to be updated
+ * via the REST API even though it is protected.
+ *
+ * @since 2.0.0
+ * @return null
+ */
+function beans_register_block_post_meta() {
+
+	$args = [
+		'auth_callback' => function() {
+			return current_user_can('edit_posts');
+		},
+		'type'          => 'boolean',
+		'single'        => true,
+		'show_in_rest'  => true,
+	];
+
+	$string_args = array_merge( $args, [ 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ] );
+
+	register_meta('post', 'beans_layout', $string_args);
+
+	// Hide breadcrumbs: true if breadcrumbs should be hidden, false or empty otherwise.
+	register_meta( 'post', '_beans_hide_breadcrumbs', $args );
+
+}
