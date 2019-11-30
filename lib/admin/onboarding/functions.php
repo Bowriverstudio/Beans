@@ -48,8 +48,11 @@ function _beans_onboard($overwrite = false){
 	$onboard = new _Beans_Admin_Onboarding_Widgets();
 	$onboard->import_widgets();
 
-	$onboard = new _Beans_Admin_Onboarding_Navigation();
-	$onboard->create_navigation_menu_items();
+	// Do not duplicate the nativation.
+	if( ! $overwrite ){
+		$onboard = new _Beans_Admin_Onboarding_Navigation();
+		$onboard->create_navigation_menu_items();
+	}
 
 	$onboard = new _Beans_Admin_Onboarding_Theme_Mod();
 	$onboard->import();

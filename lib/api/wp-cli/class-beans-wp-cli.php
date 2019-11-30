@@ -76,13 +76,17 @@ namespace {
 
 				$overwrite = false;
 				if ($assoc_args && key_exists('overwrite', $assoc_args)) {
-					$overwrite = true;
+					Beans\Admin\Onboarding\_beans_onboard(true);
+					WP_CLI::success( 'Overwrite onboarding Content' );
+				} else if ($assoc_args && key_exists('duplicate', $assoc_args)){
+					Beans\Admin\Onboarding\_beans_onboard();
+					WP_CLI::success( 'Duplicated onboarding Content' );
+				} else {
+					WP_CLI::log( 'Need to specify duplicate or overwrite' );
+					WP_CLI::log( 'wp beans onboard --overwrite' );
+					WP_CLI::log( 'wp beans onboard --duplicate' );
 				}
-//				$onboard = new Beans\Admin\Onboarding\_Beans_Onboarding_Content();
-//				$onboard->import_content($overwrite);
 
-				Beans\Admin\Onboarding\_beans_onboard($overwrite);
-				WP_CLI::success( 'Onboarded Content' );
 			}
 
 
