@@ -713,45 +713,32 @@ function _beans_doing_autosave() {
  * Locate and require a configuration file.
  *
  * First, search child theme for the configuration file in the config folder.
- * Second, search frontend framework for the configuration file in the config folder.
- * Should file doesn't exist or empty in the child, and frontend framework then search the parent for the config file.
+ * Should file doesn't exist or empty in the child, search the parent for the config file.
  *
  * @since 1.5.2
- * @updaged 2.0.0 - Add support for plugin configuration.
  *
  * @param string $configuration_filename The configuration file to locate  (not including ".php" file extension).
  * @return array The configuration data.
  */
 function beans_get_config( string $configuration_filename ) {
 
-	// Load configuration file from Child Theme if exists.
 	$child_file = get_stylesheet_directory() . '/config/' . $configuration_filename . '.php';
+
 	if ( is_readable( $child_file ) ) {
+		$data = array();
 		$data = require $child_file;
-		return (array) $data;
-	}
-
-	// Load configuration file from Frontend Framework if exists.
-	if( defined( 'BEANS_FRONTEND_FRAMEWORK_CONFIG_PATH' ) ){
-		$plugin_file = BEANS_FRONTEND_FRAMEWORK_CONFIG_PATH . $configuration_filename . '.php';
-		if ( is_readable( $plugin_file ) ) {
-			$data = require $plugin_file;
+		if ( empty( $data ) ) {
 			return (array) $data;
 		}
 	}
 
-	// Loads configuration file from Beans Theme if Exists.
 	$parent_file = get_template_directory() . '/config/' . $configuration_filename . '.php';
-	if ( is_readable( $parent_file ) ) {
-		$data = require $parent_file;
-		if (is_readable( $parent_file ) ) {
-			return (array) $data;
-		}
+	if ( empty( $data ) && is_readable( $parent_file ) ) {
+		return (array) require $parent_file;
 	}
 
-	return (array) array();
+	return (array) $data;
 }
-
 
 
 /**

@@ -11,20 +11,21 @@ add_action('enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_assets');
  */
 function enqueue_assets(){
 
-	$asset_file = include(BEANS_ADMIN_PATH . 'document-setting-panel/build/index.asset.php');
+	$asset_file = include(BEANS_ADMIN_PATH . 'editor/sidebar/build/index.asset.php');
+	$build_url = BEANS_URL . 'admin/editor/sidebar/build/';
 
 	wp_enqueue_script(
-		'beans-gutenberg-sidebar',
-		BEANS_ADMIN_DOCUMENT_SETTING_PANEL_URL . 'build/index.js',
+		'beans-sidebar-script',
+		$build_url . 'index.js',
 		$asset_file['dependencies'],
 		$asset_file['version']
 	);
 
 	wp_enqueue_style(
-		'beans-gutenberg-sidebar-style',
-		BEANS_ADMIN_DOCUMENT_SETTING_PANEL_URL . 'build/style.css',
+		'beans-sidebar-style',
+		$build_url . 'style.css',
 		'',
-		filemtime(BEANS_ADMIN_PATH . 'document-setting-panel/build/style.css')
+		filemtime(BEANS_ADMIN_PATH . 'editor/sidebar/build/style.css')
 
 	);
 }

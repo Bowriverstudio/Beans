@@ -57,48 +57,20 @@ function beans_do_register_wp_customize_options() {
 				'id'      => 'beans_layout',
 				'label'   => __( 'Default Layout', 'tm-beans' ),
 				'type'    => 'radio',
-				'default' => 'c', //beans_get_default_layout(),
+				'default' => beans_get_default_layout(),
 				'options' => $options,
 			),
 		);
-// @TODO BUG - Adding this stops custimizer from rendering.
-//
-//		beans_register_wp_customize_options(
-//			$fields,
-//			'beans_layout',
-//			array(
-//				'title'    => __( 'Default Layout', 'tm-beans' ),
-//				'priority' => 1000,
-//			)
-//		);
+
+		beans_register_wp_customize_options(
+			$fields,
+			'beans_layout',
+			array(
+				'title'    => __( 'Default Layout', 'tm-beans' ),
+				'priority' => 1000,
+			)
+		);
 	}
-
-	// Display full content or excerpts on the blog and archives ---------
-	// Copied from Theme 2020
-
-	$fields = array(
-		array(
-			'id'      => 'blog_content',
-			'label'   => __( 'On archive pages, posts show:', 'tm-beans' ),
-			'type'    => 'radio',
-			'default' => 'full',
-			'choices'  => array(
-				'full'    => __( 'Full text', 'twentytwenty' ),
-				'summary' => __( 'Summary', 'twentytwenty' ),
-			),
-		),
-	);
-	beans_register_wp_customize_options(
-		$fields,
-		'theme_options',
-		array(
-			'title'    => __( 'Theme Optionsa', 'tm-beans' ),
-			'priority' => 1010,
-		)
-	);
-
-
-
 
 	$fields = array(
 		array(

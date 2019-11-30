@@ -10,7 +10,7 @@ return array(
 		array(
 			'name'  => __( 'Primary', 'tm-beans' ),
 			'slug'  => 'primary',
-			'color' => 'green',
+			'color' => '#2d7091',
 		),
 		array(
 			'name'  => __( 'Muted', 'tm-beans' ),

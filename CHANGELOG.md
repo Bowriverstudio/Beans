@@ -2,12 +2,6 @@
 
 ## 2019 version 2.0.0
 
-
-* Added WP CLI support.
-* Made it a requirement to use a Beans UI Plugin.
-* Moved Rendering to Plugin
-* Moved Beans Layout selected to Gutenberg Sidebar.
-* Add Onboarding
 * Added admin warning when child theme not included.
 * Added configuration for menus, widgets, blocks.
 
