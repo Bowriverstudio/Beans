@@ -77,6 +77,7 @@ function beans_do_register_wp_customize_options() {
 	// Copied from Theme 2020
 
 	$fields = array(
+		// @TODO - Option not showing up.
 		array(
 			'id'      => 'blog_content',
 			'label'   => __( 'On archive pages, posts show:', 'tm-beans' ),
@@ -87,6 +88,13 @@ function beans_do_register_wp_customize_options() {
 				'summary' => __( 'Summary', 'twentytwenty' ),
 			),
 		),
+// TODO - add to REST API later on.
+//		array(
+//			'id'      => '_beans_hide_breadcrumbs',
+//			'label'   => __( 'Hide Breadcrumbs Site Wide', 'tm-beans' ),
+//			'type'    => 'checkbox',
+//			'default' => false,
+//		),
 	);
 	beans_register_wp_customize_options(
 		$fields,
@@ -96,6 +104,8 @@ function beans_do_register_wp_customize_options() {
 			'priority' => 1010,
 		)
 	);
+
+
 
 
 
