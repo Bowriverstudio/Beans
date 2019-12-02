@@ -20,6 +20,62 @@ namespace {
 		{
 
 			/**
+			 * Show current Beans values of the breadcrumbs
+			 *
+			 * ## EXAMPLES
+			 *
+			 *  $ wp beans breadcrumbs
+			 *  $ wp beans breadcrumbs key=single value=0
+			 *
+			 * @subcommand breadcrumbs
+			 *
+			 * @param array $args Positional arguments.
+			 * @param array $assoc_args Stores all the arguments defined like --key=value or --flag or --no-flag.
+			 * @since 2.0.0
+			 *
+			 */
+			public function breadcrumbs($args, $assoc_args)
+			{
+				$bean_breadcrumbs_option = get_option('bean_breadcrumbs');
+
+				WP_CLI::log('To Hide breadcrumbs on posts type:');
+				WP_CLI::log('wp beans breadcrumbs key=single value=0');
+
+				if( sizeof($args) ==2 ){
+					// Extract the option key, and value from the args.
+					$option_key = '';
+					$option_value = '';
+					foreach($args as $arg){
+						list($key, $value) = explode('=', $arg);
+						if($key == 'key'){
+							$option_key = $value;  // Single ...
+						} else if ($key == 'value'){
+							$option_value = $value;
+						}
+					}
+					$all_options = beans_breadcrumb_options();
+					if( in_array($option_key, $all_options )){
+						$bean_breadcrumbs_option[$option_key] = $option_value;
+						update_option( 'bean_breadcrumbs', $bean_breadcrumbs_option );
+						WP_CLI::success('Breadcrumb '.$option_key.' is updated to '.$option_value);
+					}
+				}
+
+				$items = array();
+				$fields = array('Name', 'Value');
+				$index = 0;
+				foreach( $bean_breadcrumbs_option as $key => $value){
+
+					$items[$index]['Name'] = $key;
+					$items[$index]['Value'] = ($value ? 'Shown' : 'Hidden');
+					$index++;
+				}
+
+				WP_CLI\Utils\format_items('table', $items, $fields);
+			}
+
+
+			/**
 			 * Show current Beans Development Mode status
 			 *
 			 * ## EXAMPLES
