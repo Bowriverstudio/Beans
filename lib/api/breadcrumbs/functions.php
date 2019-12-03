@@ -96,8 +96,6 @@ function beans_breadcrumbs_disabled_on_current_page() {
  * @return false -> if not allowed, or array of crumbs.
  */
 function beans_get_breadcrumbs(){
-	d(beans_breadcrumbs_disabled_on_current_page());
-	d(beans_breadcrumbs_hidden_on_current_page());
 
 	// Breadcrumbs not supported for home or front page.
 	if ( is_home() || is_front_page() ) {
