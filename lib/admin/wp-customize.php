@@ -28,7 +28,7 @@ function beans_do_enqueue_wp_customize_assets() {
 	);
 }
 
-beans_add_smart_action( 'customize_register', 'beans_do_register_wp_customize_options' );
+//beans_add_smart_action( 'customize_register', 'beans_do_register_wp_customize_options' );
 /**
  * Add Beans options to the WordPress Customizer.
  *
@@ -100,7 +100,7 @@ function beans_do_register_wp_customize_options() {
 		$fields,
 		'theme_options',
 		array(
-			'title'    => __( 'Theme Optionsa', 'tm-beans' ),
+			'title'    => __( 'Theme Options', 'tm-beans' ),
 			'priority' => 1010,
 		)
 	);
@@ -169,4 +169,54 @@ function beans_do_register_wp_customize_options() {
 			'priority' => 1010,
 		)
 	);
+}
+
+
+// TODO Get this to work: https://www.getbeans.io/documentation/field-types/
+// Needs to support all breadcrumbs.
+//beans_add_smart_action( 'customize_register', 'beans_do_register_wp_customize_breadcrumbs_options' );
+/**
+ * Add Beans options to the WordPress Customizer.
+ *
+ * @since 1.0.0
+ *
+ * @return void
+ */
+function beans_do_register_wp_customize_breadcrumbs_options() {
+
+
+
+	$fields = array(
+		'id' => 'group_id',
+		'label' => 'Field label',
+		'description' => 'Field description',
+		'type' => 'group',
+		'db_group' => true, // Whether the group value should be saved together as an array in the db or not.
+		'fields' => array( // Array of fields as they would be registered individually.
+			array(
+				'id' => 'field_id',
+				'label' => 'Field label',
+				'type' => 'text',
+				'default' => ''
+			),
+			array(
+				'id' => 'field_id2',
+				'label' => 'Field label',
+				'type' => 'textarea',
+				'default' => ''
+			),
+			// ...
+		)
+	);
+
+
+	beans_register_wp_customize_options(
+		$fields,
+		'theme_options',
+		array(
+			'title'    => __( 'Theme Options', 'tm-beans' ),
+			'priority' => 1010,
+		)
+	);
+
 }

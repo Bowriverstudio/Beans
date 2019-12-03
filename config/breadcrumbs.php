@@ -1,10 +1,16 @@
 <?php
 /**
- * Default values for customizer.
+ * Default for Breadcrumbs (1 -> show, 0 hide )
  *
  * @package Beans\Config
  */
 
 return array(
-    'beans_primary_menu_breakpoint' => 'l',
+	'visibility' => array(
+		'single' => '1',
+		'page' => '0',
+		'archive' => '1',
+		'404' => '0',
+	)
 );
+

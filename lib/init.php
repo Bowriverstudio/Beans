@@ -96,6 +96,8 @@ function beans_load_dependencies() {
 			'template',
 			'layout',
 			'widget',
+			'rest',
+			'breadcrumbs',
 			'wp-cli'
 		)
 	);

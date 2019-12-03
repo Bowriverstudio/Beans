@@ -79,4 +79,25 @@ function beans_register_block_post_meta() {
 	// Hide breadcrumbs: true if breadcrumbs should be hidden, false or empty otherwise.
 	register_meta( 'post', '_beans_hide_breadcrumbs', $args );
 
+	// Hide image: true if featured image should be hidden, false or empty otherwise.
+	register_meta( 'post', '_beans_hide_singular_image', $args );
+
+//	// Hide title: true if title should be hidden, false or empty otherwise.
+//	register_meta( 'post', '_genesis_hide_title', $args );
+//
+//	// Hide breadcrumbs: true if breadcrumbs should be hidden, false or empty otherwise.
+//	register_meta( 'post', '_genesis_hide_breadcrumbs', $args );
+//
+//	// Hide image: true if featured image should be hidden, false or empty otherwise.
+//	register_meta( 'post', '_genesis_hide_singular_image', $args );
+//
+//	// Body class: string to add to the body element class attribute.
+//	register_meta( 'post', '_genesis_custom_body_class', $string_args );
+//
+//	// Post class: string to add to the article.entry element class attribute.
+//	register_meta( 'post', '_genesis_custom_post_class', $string_args );
+//
+//	// Layout: string layout.
+//	register_meta( 'post', '_genesis_layout', $string_args );
+
 }
