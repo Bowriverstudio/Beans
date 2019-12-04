@@ -178,6 +178,7 @@ function beans_includes() {
 	if ( is_admin() ) {
 		require_once BEANS_ADMIN_PATH . 'menu.php';
 		require_once BEANS_ADMIN_PATH . 'options.php';
+		require_once BEANS_ADMIN_PATH . 'theme-activation.php';
 		require_once BEANS_ADMIN_PATH . 'updater.php';
 		require_once BEANS_ADMIN_PATH . 'use-child-theme.php';
 		require_once BEANS_ADMIN_PATH . 'onboarding/functions.php';

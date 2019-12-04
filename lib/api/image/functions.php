@@ -138,3 +138,56 @@ function beans_add_image_options_to_settings() {
 
 	return $instance;
 }
+
+/**
+ * Which post types have singular images enabled and active?
+ *
+ * @since 2.0.0
+ *
+ * @return array The singular images with active 'genesis-singular-images' support.
+ */
+function beans_post_types_with_singular_images_enabled() {
+
+	$options = get_option('bean_featured_images');
+	$active_options = array_filter(
+		$options,
+		function ( $value, $option_name ) {
+			return $value;
+		},
+		ARRAY_FILTER_USE_BOTH
+	);
+
+	return array_keys( $active_options );
+}
+
+/**
+ * Does this page / post have a featured image and is set to display it?
+ *
+ * @since 2.0.0
+ *
+ * @return bool
+ */
+function beans_display_featured_image(){
+
+	if ( ! has_post_thumbnail() || ! current_theme_supports( 'post-thumbnails' ) ) {
+		return false;
+	}
+
+	// Indicates that the “Hide Featured Image” checkbox is enabled and checked in sidebar.
+	$_beans_hide_singular_image =  apply_filters( 'beans_hide_singular_image', get_post_meta( get_queried_object_id(), '_beans_hide_singular_image', true ) );
+	if( $_beans_hide_singular_image ){
+		return false;
+	}
+
+	// Indicates that the option bean_featured_images is either enabled or disabled.
+	global $post;
+	$options = get_option('bean_featured_images');
+	$key = 'show_featured_image_' . $post->post_type;
+	if ( is_array($options) && array_key_exists($key, $options)){
+		if( $options[$key] ==0 ){
+			return false;
+		}
+	}
+
+	return true;
+}

@@ -15,7 +15,6 @@
  * @since   2.0.0
  */
 require_once "rest.php";
-require_once "insert_default_settings.php";
 
 /**
  * Gets breadcrumb options that are enabled in option bean_breadcrumbs.

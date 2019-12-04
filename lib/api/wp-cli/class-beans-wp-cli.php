@@ -111,6 +111,39 @@ namespace {
 			}
 
 			/**
+			 * Show current Beans visible values of the featured images
+			 *
+			 * ## EXAMPLES
+			 *
+			 *  $ wp beans featured_images
+			 *
+			 * @subcommand featured_images
+			 *
+			 * @param array $args Positional arguments.
+			 * @param array $assoc_args Stores all the arguments defined like --key=value or --flag or --no-flag.
+			 * @since 2.0.0
+			 *
+			 */
+			public function featured_images($args, $assoc_args)
+			{
+				$options = get_option('bean_featured_images');
+				WP_CLI::log('Showing options for: bean_featured_images ');
+
+
+				$items = array();
+				$fields = array('Name', 'Value');
+				$index = 0;
+				foreach( $options as $key => $value){
+
+					$items[$index]['Name'] = $key;
+					$items[$index]['Value'] = ($value ? 'Shown' : 'Hidden');
+					$index++;
+				}
+
+				WP_CLI\Utils\format_items('table', $items, $fields);
+			}
+
+			/**
 			 * Imports content from onboarding.
 			 *
 			 * Overwrite - allows forces posts and pages to be overwritten if exists.

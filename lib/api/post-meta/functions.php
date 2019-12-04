@@ -82,6 +82,11 @@ function beans_register_block_post_meta() {
 	// Hide image: true if featured image should be hidden, false or empty otherwise.
 	register_meta( 'post', '_beans_hide_singular_image', $args );
 
+
+	$object_args = array_merge( $args, [ 'type' => 'object' ] );
+
+	register_meta('post', '_beans_remove_actions', $string_args);
+
 //	// Hide title: true if title should be hidden, false or empty otherwise.
 //	register_meta( 'post', '_genesis_hide_title', $args );
 //

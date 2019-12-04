@@ -8,6 +8,8 @@
 namespace Beans\Framework\API\Rest;
 
 require_once 'breadcrumbs.php';
+require_once 'images.php';
+require_once 'remove-actions.php';
 //ddd('sss');
 
 //add_action( 'rest_api_init', __NAMESPACE__ . '\\layouts' );
