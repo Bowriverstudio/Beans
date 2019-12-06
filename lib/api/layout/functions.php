@@ -21,6 +21,7 @@
 /**
  * Get the default layout ID.
  *
+ * @deprecated 2.0.0
  * @updated 2.0.0 - Add Elvis operator to respect config beans_layout default value.
  * @since 1.0.0
  *
@@ -94,6 +95,7 @@ function beans_get_layouts_for_options( $add_default = false ) {
 	$base    = BEANS_ADMIN_ASSETS_URL . 'images/layouts/';
 	$layouts = array(
 		'c' => array(
+			'icon'               => 'c',
 			'src'                => $base . 'c.png',
 			'alt'                => __( 'Full-Width Content Layout', 'tm-beans' ),
 			'screen_reader_text' => __( 'Option for the Full-Width Content Layout.', 'tm-beans' ),
@@ -104,10 +106,13 @@ function beans_get_layouts_for_options( $add_default = false ) {
 	$has_primary = beans_has_widget_area( 'sidebar_primary' );
 
 	if ( $has_primary ) {
+
+		$layouts['c_sp']['icon']                = 'cs';
 		$layouts['c_sp']['src']                = $base . 'cs.png';
 		$layouts['c_sp']['alt']                = __( 'Content and Primary Sidebar Layout', 'tm-beans' );
 		$layouts['c_sp']['screen_reader_text'] = __( 'Option for the Content and Primary Sidebar Layout.', 'tm-beans' );
 
+		$layouts['sp_c']['icon']                = 'sc';
 		$layouts['sp_c']['src']                = $base . 'sc.png';
 		$layouts['sp_c']['alt']                = __( 'Primary Sidebar and Content Layout', 'tm-beans' );
 		$layouts['sp_c']['screen_reader_text'] = __( 'Option for the Primary Sidebar and Content Layout.', 'tm-beans' );
@@ -115,14 +120,17 @@ function beans_get_layouts_for_options( $add_default = false ) {
 
 	// Add sidebar secondary layouts if the primary and secondary widget area are registered.
 	if ( $has_primary && beans_has_widget_area( 'sidebar_secondary' ) ) {
+		$layouts['c_sp_ss']['icon']                = 'css';
 		$layouts['c_sp_ss']['src']                = $base . 'css.png';
 		$layouts['c_sp_ss']['alt']                = __( 'Content, Primary Sidebar and Secondary Sidebar Layout', 'tm-beans' );
 		$layouts['c_sp_ss']['screen_reader_text'] = __( 'Option for the Content, Primary Sidebar and Secondary Sidebar Layout.', 'tm-beans' );
 
+		$layouts['sp_ss_c']['icon']                = 'ssc';
 		$layouts['sp_ss_c']['src']                = $base . 'ssc.png';
 		$layouts['sp_ss_c']['alt']                = __( 'Primary Sidebar, Secondary Sidebar and Content Layout', 'tm-beans' );
 		$layouts['sp_ss_c']['screen_reader_text'] = __( 'Option for the Primary Sidebar, Secondary Sidebar and Content Layout.', 'tm-beans' );
 
+		$layouts['sp_c_ss']['icon']                = 'scs';
 		$layouts['sp_c_ss']['src']                = $base . 'scs.png';
 		$layouts['sp_c_ss']['alt']                = __( 'Primary Sidebar, Content and Secondary Sidebar Layout', 'tm-beans' );
 		$layouts['sp_c_ss']['screen_reader_text'] = __( 'Option for the Primary Sidebar, Content and Secondary Sidebar Layout.', 'tm-beans' );
@@ -140,6 +148,9 @@ function beans_get_layouts_for_options( $add_default = false ) {
 	 * @param array $args An array of layouts.
 	 */
 	$layouts = apply_filters( 'beans_layouts', $layouts );
+
+	return $layouts;
+
 
 	if ( ! $add_default ) {
 		return $layouts;
@@ -192,4 +203,33 @@ function beans_has_secondary_sidebar( $layout ) {
 	}
 
 	return beans_is_active_widget_area( 'sidebar_secondary' );
+}
+
+function beans_get_default_selected_layouts(){
+	return ( get_option( 'beans_default_selected_layouts' ))  ?: beans_get_default_layouts();
+}
+
+
+/**
+ * Gets Beans' default layout
+ *
+ * @since 2.0.0
+ *
+ * @return array
+ */
+function beans_get_default_layouts(){
+
+	$default_layouts = beans_get_config('layout')['default'];
+
+	/**
+	 * Filter the default layout ID.
+	 *
+	 * The default layout post and archive ID is set to "c_sp" (content + sidebar primary). If the sidebar primary is unregistered, then it is set to "c" (content only).
+	 * The default page layout is set to "c"
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param string $layout The default layout ID.
+	 */
+	return apply_filters( 'beans_default_layouts', $default_layouts );
 }

@@ -1,0 +1,8 @@
+{
+	"c": "c",
+	"c_sp": "cs",
+	"sp_c": "sc",
+	"c_sp_ss": "css",
+	"sp_ss_c": "ssc",
+	"sp_c_ss": "scs"
+}
