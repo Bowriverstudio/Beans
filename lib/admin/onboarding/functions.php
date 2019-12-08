@@ -21,6 +21,11 @@ require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-theme-mod.ph
 require_once BEANS_ADMIN_PATH . '/onboarding/class-beans-onboarding-widgets.php';
 //		require_once BEANS_ADMIN_PATH . '/onboarding/Beans_Silent_Upgrader_Skin.php';
 
+
+function beans_get_onboarding_content(string $slug){
+
+}
+
 /**
  * Returns the config file - onboarding if exists.
  *
