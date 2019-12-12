@@ -2,6 +2,8 @@
 
 ## 2019 version 2.0.0
 
+
+* Added REST routes for Layouts, Wrap and Remove Actions.
 * Changed beans_layout to support post / pages / archives.
 * Add support to Beans Gutenberg Sidebar to support beans_fixed_wrap_main.
 * Added Remove Actions to Gutenberg Sidebar.
