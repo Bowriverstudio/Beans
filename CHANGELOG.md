@@ -2,7 +2,10 @@
 
 ## 2019 version 2.0.0
 
-
+* Changed beans_layout to support post / pages / archives.
+* Add support to Beans Gutenberg Sidebar to support beans_fixed_wrap_main.
+* Added Remove Actions to Gutenberg Sidebar.
+* Refactored Beans Gutenberg Sidebar to support fill.
 * Added WP CLI support.
 * Made it a requirement to use a Beans UI Plugin.
 * Moved Rendering to Plugin

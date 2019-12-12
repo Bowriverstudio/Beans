@@ -87,22 +87,57 @@ function beans_register_block_post_meta() {
 
 	register_meta('post', '_beans_remove_actions', $string_args);
 
-//	// Hide title: true if title should be hidden, false or empty otherwise.
-//	register_meta( 'post', '_genesis_hide_title', $args );
-//
-//	// Hide breadcrumbs: true if breadcrumbs should be hidden, false or empty otherwise.
-//	register_meta( 'post', '_genesis_hide_breadcrumbs', $args );
-//
-//	// Hide image: true if featured image should be hidden, false or empty otherwise.
-//	register_meta( 'post', '_genesis_hide_singular_image', $args );
-//
-//	// Body class: string to add to the body element class attribute.
-//	register_meta( 'post', '_genesis_custom_body_class', $string_args );
-//
-//	// Post class: string to add to the article.entry element class attribute.
-//	register_meta( 'post', '_genesis_custom_post_class', $string_args );
-//
-//	// Layout: string layout.
-//	register_meta( 'post', '_genesis_layout', $string_args );
 
+	// Defines the container width:
+	register_meta( 'post', '_beans_body_container', $string_args );
 }
+
+
+
+
+beans_add_smart_action( 'wp', 'beans_do_remove_action_options',9999);
+/**
+ * Remove possible actions defined in the Gutenberg Sidebar.
+ *
+ *
+ */
+function beans_do_remove_action_options(){
+
+	$actions =  apply_filters( 'beans_do_remove_action_options', get_post_meta( get_queried_object_id(), '_beans_remove_actions', true ) );
+	if($actions){
+		$action_array = json_decode($actions,true);
+		foreach($action_array as $action => $value){
+			if( $value ){
+				beans_remove_action($action);
+			}
+		}
+	}
+
+	beans_add_attribute('beans_fixed_wrap[_main]', 'class', 'TEST');
+}
+
+
+beans_add_smart_action( 'wp', 'beans_do_beans_fixed_wrap_main',9999);
+/**
+ * Optionally adds a wrap to the beans_fixed_wrap[_main]
+ *
+ * Source of truth order is:
+ * 1) Filter
+ * 2) Post_meta
+ * 3) theme_mod
+ * 4) Default value in config file.
+ *
+ */
+function beans_do_beans_fixed_wrap_main(){
+
+	$theme_default_value = get_theme_mod('beans_fixed_wrap_main', beans_get_customizer_default_value('beans_fixed_wrap_main') );
+	$post_meta_value = get_post_meta( get_queried_object_id(), '_beans_body_container', true );
+
+	if( $post_meta_value ){
+		beans_add_attribute('beans_fixed_wrap[_main]', 'class', apply_filters( "beans_fixed_wrap_main_max_width",$post_meta_value) );
+	} else {
+		beans_add_attribute('beans_fixed_wrap[_main]', 'class', apply_filters( "beans_fixed_wrap_main_max_width",$theme_default_value));
+	}
+}
+
+

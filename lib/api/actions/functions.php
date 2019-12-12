@@ -793,20 +793,5 @@ function beans_remove_action_options(){
 	return apply_filters('beans_remove_action_options', $options);
 }
 
-add_action( 'wp', 'beans_do_remove_action_options',9999);
-function beans_do_remove_action_options(){
-
-	$actions =  apply_filters( 'beans_do_remove_action_options', get_post_meta( get_queried_object_id(), '_beans_remove_actions', true ) );
-	if($actions){
-		$action_array = json_decode($actions,true);
-		foreach($action_array as $action => $value){
-			if( $value ){
-				beans_remove_action($action);
-			}
-		}
-	}
-
-
-}
 
 
