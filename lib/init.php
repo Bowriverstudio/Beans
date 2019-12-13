@@ -180,6 +180,7 @@ function beans_includes() {
 		require_once BEANS_ADMIN_PATH . 'wp-customize.php';
 	}
 
+	require_once BEANS_PATH . 'renderer/header.php';
 	require_once BEANS_PATH . 'renderer/menu.php';
 
 

@@ -220,3 +220,53 @@ function beans_do_register_wp_customize_breadcrumbs_options() {
 	);
 
 }
+
+
+beans_add_smart_action( 'customize_register', 'beans_do_register_wp_customize_document_head_options' );
+/**
+ * Add Document Head options to the WordPress Customizer.
+ *
+ * @since 2.0.0
+ *
+ * @return void
+ */
+function beans_do_register_wp_customize_document_head_options() {
+
+	$fields = array(
+		array(
+			'id'      => 'beans_head_adjacent_posts_rel_link',
+			'label'    => __( 'Adjacent Posts rel link tags', 'tm-beans' ),
+			'type'    => 'checkbox',
+			'default' => false,
+		),
+		array(
+			'id'      => 'beans_head_wlwmanifest_link',
+			'label'    => __( 'Include Windows Live Writer Support Tag?', 'tm-beans' ),
+			'type'    => 'checkbox',
+			'default' => false,
+		),
+		array(
+			'id'      => 'beans_head_shortlink',
+			'label'    => __( 'Include Shortlink Tag?', 'tm-beans' ),
+			'type'    => 'checkbox',
+			'default' => false,
+		),
+		array(
+			'id'      => 'beans_wp_generator',
+			'label'    => __( 'Displays the XHTML generator?', 'tm-beans' ),
+			'description' => __('Removes the  tag &lt;meta name="generator" content="WordPress version"&gt;', 'tm-beans' ),
+			'type'    => 'checkbox',
+			'default' => false,
+		),
+	);
+
+	beans_register_wp_customize_options(
+		$fields,
+		'beans_document_head',
+		array(
+			'title'    => __( 'Document Head', 'tm-beans' ),
+			'description' => __( 'By default, WordPress places several tags in your document title. Most of these tags are completely unnecessary, and provide no SEO value whatsoever; they just make your site slower to load. Choose which tags you would like included in your document title. If you do not know what something is, leave it unchecked.', 'tm-beans' ),
+			'priority' => 1010,
+		)
+	);
+}
