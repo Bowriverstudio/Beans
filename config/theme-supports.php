@@ -7,11 +7,11 @@
  */
 
 return array(
-    'title-tag' => true,
-    'custom-background' => true,
-    'menus' => true,
-    'post-thumbnails' => true,
-    'automatic-feed-links' => true,
+    'title-tag' => '',
+    'custom-background' => '',
+    'menus' => '',
+    'post-thumbnails' => '',
+    'automatic-feed-links' => '',
     'html5' => array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'script', 'style',),
     'custom-header' =>
         array(
@@ -23,9 +23,9 @@ return array(
         ),
 
     // Gutenberg Specific.
-    'wp-block-styles' => true,
-    'align-wide' => true,
-    'editor-styles' => true,
+    'wp-block-styles' => '',
+    'align-wide' => '',
+    'editor-styles' => '',
 );
 
 

@@ -4,7 +4,8 @@
  *
  * This file adds the landing page template to the Beans Theme.
  *
- * This is only available - todo condition.
+ * This is only available if the child theme add_theme_support beans-template-landing-page
+
  *
  * Template Name: Landing
  * Template Post Type: post, page

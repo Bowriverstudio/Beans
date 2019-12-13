@@ -128,7 +128,11 @@ function beans_add_theme_support() {
 
 	$theme_supports = beans_get_config( 'theme-supports' );
 	foreach ( $theme_supports as $feature => $args ) {
-		add_theme_support( $feature, $args );
+		if($args ){
+			add_theme_support( $feature, $args );
+		} else {
+			add_theme_support( $feature );
+		}
 	}
 
 	// Default hides the admin edit link
@@ -161,14 +165,14 @@ function beans_includes() {
 
 	// Include admin.
 	if ( is_admin() ) {
+		require_once BEANS_ADMIN_PATH . 'editor/sidebar/functions.php';
 		require_once BEANS_ADMIN_PATH . 'menu.php';
+		require_once BEANS_ADMIN_PATH . 'onboarding/functions.php';
 		require_once BEANS_ADMIN_PATH . 'options.php';
 		require_once BEANS_ADMIN_PATH . 'theme-activation.php';
+		require_once BEANS_ADMIN_PATH . 'theme-post-type-templates.php';
 		require_once BEANS_ADMIN_PATH . 'updater.php';
 		require_once BEANS_ADMIN_PATH . 'use-child-theme.php';
-		require_once BEANS_ADMIN_PATH . 'onboarding/functions.php';
-//		require_once BEANS_ADMIN_PATH . 'document-setting-panel/functions.php';
-		require_once BEANS_ADMIN_PATH . 'editor/sidebar/functions.php';
 	}
 
 	// Include customizer.
