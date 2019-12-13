@@ -125,27 +125,15 @@ add_action( 'beans_init', 'beans_add_theme_support' );
  * @return void
  */
 function beans_add_theme_support() {
-	add_theme_support( 'title-tag' );
-	add_theme_support( 'custom-background' );
-	add_theme_support( 'menus' );
-	add_theme_support( 'post-thumbnails' );
-	add_theme_support( 'automatic-feed-links' );
-	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
-	add_theme_support(
-		'custom-header',
-		array(
-			'width'       => 2000,
-			'height'      => 500,
-			'flex-height' => true,
-			'flex-width'  => true,
-			'header-text' => false,
-		)
-	);
 
-	// Gutenberg Specific.
-	add_theme_support( 'wp-block-styles' );
-	add_theme_support( 'align-wide' );
-	add_theme_support( 'editor-styles' );
+	$theme_supports = beans_get_config( 'theme-supports' );
+	foreach ( $theme_supports as $feature => $args ) {
+		add_theme_support( $feature, $args );
+	}
+
+	// Default hides the admin edit link
+	add_filter( 'edit_post_link', '__return_empty_string' );
+
 
 	// Adds support for editor font sizes.
 	// Adds support for editor color palette.
@@ -156,9 +144,6 @@ function beans_add_theme_support() {
 		}
 	}
 
-	// Beans specific.
-	add_theme_support( 'offcanvas-menu' );
-	add_theme_support( 'beans-default-styling' );
 
 }
 
