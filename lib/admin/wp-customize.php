@@ -270,3 +270,34 @@ function beans_do_register_wp_customize_document_head_options() {
 		)
 	);
 }
+
+beans_add_smart_action( 'customize_register', 'beans_do_register_wp_customize_jquery' );
+/**
+ * Option to add or remove jquery globally.
+ *
+ * @since 2.0.0
+ *
+ * @return void
+ */
+function beans_do_register_wp_customize_jquery() {
+
+	$fields = array(
+		array(
+			'id'      => 'beans_remove_jquery',
+			'label'    => __( 'Remove jQuery', 'tm-beans' ),
+			'type'    => 'checkbox',
+			'default' => false,
+		),
+
+	);
+
+	beans_register_wp_customize_options(
+		$fields,
+		'beans_javascript_jquery',
+		array(
+			'title'    => __( 'Remove jQuery ', 'tm-beans' ),
+			'description' => __( 'By default wordpress includes jquery.  Some plugins will not work if you remove jquery.  ', 'tm-beans' ),
+			'priority' => 1010,
+		)
+	);
+}
