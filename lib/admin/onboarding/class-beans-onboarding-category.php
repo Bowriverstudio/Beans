@@ -66,17 +66,17 @@ final class _Beans_Onboarding_Category
 				wp_insert_category($category);
 			}
 		}
-
 		if (array_key_exists('default_category', $category_data)) {
 			update_option('default_category', get_category_by_slug($category_data['default_category'])->term_id);
 		}
 
 		if (array_key_exists('remove_uncategorized', $category_data)) {
-			wp_delete_category(get_category_by_slug('uncategorized')->term_id);
+			$uncategorized = get_category_by_slug('uncategorized');
+			if( $uncategorized ){
+				wp_delete_category($uncategorized->term_id);
+
+			}
 		}
-
-//
-
 	}
 
 

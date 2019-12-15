@@ -162,7 +162,7 @@ namespace {
 			public function onboard($args, $assoc_args)
 			{
 				require_once BEANS_ADMIN_PATH . 'onboarding/functions.php';
-
+				WP_CLI::log( 'Overwrite onboarding Content' );
 				$overwrite = false;
 				if ($assoc_args && key_exists('overwrite', $assoc_args)) {
 					Beans\Admin\Onboarding\_beans_onboard(true);
