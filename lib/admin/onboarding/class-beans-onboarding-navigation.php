@@ -68,14 +68,11 @@ final class _Beans_Admin_Onboarding_Navigation
 	}
 
 	public function delete_onboarding_menus(){
-		d(get_nav_menu_locations());
 		$menus_config   = self::navigation_menus();
 		foreach ( $menus_config as $menu_location => $menu_location_config ) {
-			d($menu_location);
 					$menu = get_term( $menu_location );
 
 			$menu = wp_get_nav_menu_object( $menu_location );
-			d($menu);
 			wp_delete_nav_menu($menu_location);
 		}
 
@@ -95,17 +92,22 @@ final class _Beans_Admin_Onboarding_Navigation
 		$imported_posts = get_option( 'beans_onboarding_imported_post_ids', [] );
 
 		// Create a menu location if one does not exist.
-		// @TODO TEST THIS CODE
-		if( $menu_locations['primary'] == 0){
+		if( !array_key_exists('primary', $menu_locations) || $menu_locations['primary'] == 0){
+
 			$locations = get_theme_mod('nav_menu_locations');
 			$menu_header = get_term_by('name', 'Primary Menu', 'nav_menu');
 
-			$menu_header_id = $menu_header->term_id;
-			if($menu_header_id == 0) {
+
+			if( $menu_header ){
+				$menu_header_id = $menu_header->term_id;
+			} else {
 				$menu_header_id = wp_create_nav_menu('Primary Menu');
+
 			}
+
 			$locations['primary'] = $menu_header_id;
 			set_theme_mod( 'nav_menu_locations', $locations );
+
 			$menu_locations = get_nav_menu_locations();
 		}
 
@@ -127,7 +129,11 @@ final class _Beans_Admin_Onboarding_Navigation
 					$new_menu_item[ $slug ]['parent'] = $menu_item['parent'];
 				}
 
-				$post_object = get_post( $imported_posts[ $slug ] );
+				if( array_key_exists($slug, $imported_posts)){
+					$post_object = get_post( $imported_posts[ $slug ] );
+				} else {
+					$post_object = null;
+				}
 
 				if ( empty( $post_object ) ) {
 
@@ -137,7 +143,7 @@ final class _Beans_Admin_Onboarding_Navigation
 						[
 							'menu-item-title'     => $menu_item['title'],
 							'menu-item-status'    => 'publish',
-							'menu-item-url'      => ($menu_item['url'] ?: '#'),
+							'menu-item-url'      => (array_key_exists('url', $menu_item ) ? $menu_item['url'] : '#'),
 						]
 					);
 
