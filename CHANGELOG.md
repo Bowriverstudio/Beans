@@ -1,5 +1,9 @@
 # Beans Changelog
 
+
+* Fixed Warning: Each child in a list should have a unique "key" prop. - RemoveActionToggle
+
+
 ## 2019 version 2.0.0
 
 
