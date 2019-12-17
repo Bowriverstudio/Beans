@@ -1,6 +1,7 @@
 # Beans Changelog
 
-
+* Fixed secondary Can't call setState on a component that is not yet mounted
+* Fixed setState on unmounted Component
 * Fixed Warning: Each child in a list should have a unique "key" prop. - RemoveActionToggle
 
 
