@@ -22,6 +22,7 @@ final class _Beans_Admin_Onboarding_Plugin
 {
 
 	public function onboarding_plugins() {
+
 		$config = _beans_onboarding_config();
 		return isset($config['dependencies']['plugins']) ? (array)$config['dependencies']['plugins'] : [];
 	}
@@ -58,7 +59,7 @@ final class _Beans_Admin_Onboarding_Plugin
 					?>
 					<tr>
 						<td>
-							<?php if ($plugin['icon']){ ?>
+							<?php if (array_key_exists('icon', $plugin)){ ?>
 							<img width="40px" height="40px" src="<?php echo $plugin['icon'] ?>"></img></td>
 						<?php } else { ?>
 							<img width="40px" height="40px"

@@ -54,7 +54,8 @@ final class _Beans_Onboarding_Admin_Page
 	 *
 	 */
 	public function display_screen()
-	{ ?>
+	{
+		?>
 		<div class="beans_admin_notice hidden ">
 			<p class="beans_admin_notice_content"></p>
 		</div>

@@ -63,10 +63,14 @@ function beans_get_layout() {
 	} elseif ( is_category() || is_tag() || is_tax() ) {
 		$layout = beans_get_term_meta( 'beans_layout' );
 	}
-
 	// When the layout is not found or is set to "default_fallback", use the theme's default layout.
 	if ( ! isset( $layout ) || ! $layout || 'default_fallback' === $layout ) {
-		$layout = get_theme_mod( 'beans_layout', beans_get_default_layout() );
+		$layouts = beans_get_default_selected_layouts();
+		if( array_key_exists(get_post_type(),  $layouts)){
+			$layout = $layouts[get_post_type()];
+		} else {
+			$layout = $layouts['archive'];
+		}
 	}
 
 	/**

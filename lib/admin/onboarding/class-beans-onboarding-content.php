@@ -23,6 +23,21 @@ final class _Beans_Onboarding_Content
 	public function onboarding_content()
 	{
 		$config = _beans_onboarding_config();
+
+		// Load files from config/content/import if not defined in config file.
+		if( !array_key_exists('content', $config)) {
+			$files = array_slice(scandir(ONBOARDING_CONTENT_PATH), 2);
+			$data = array();
+			foreach ($files as $file) {
+				$_file = ONBOARDING_CONTENT_PATH . '/' . $file;
+				list($slug, $extension) = explode('.', $file) ;
+				if (is_readable($_file)) {
+					$data[$slug] = require $_file;
+				}
+			}
+			return $data;
+		}
+
 		return isset($config['content']) ? (array)$config['content'] : [];
 	}
 
@@ -36,8 +51,6 @@ final class _Beans_Onboarding_Content
 	 */
 	public function display()
 	{
-
-
 		?>
 		<div>
 			<h3>Theme Content</h3>
