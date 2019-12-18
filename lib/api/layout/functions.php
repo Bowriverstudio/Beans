@@ -66,7 +66,8 @@ function beans_get_layout() {
 	// When the layout is not found or is set to "default_fallback", use the theme's default layout.
 	if ( ! isset( $layout ) || ! $layout || 'default_fallback' === $layout ) {
 		$layouts = beans_get_default_selected_layouts();
-		if( array_key_exists(get_post_type(),  $layouts)){
+
+		if( get_post_type() && array_key_exists(get_post_type(),  $layouts)){
 			$layout = $layouts[get_post_type()];
 		} else {
 			$layout = $layouts['archive'];
