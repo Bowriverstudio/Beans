@@ -65,6 +65,13 @@ function _beans_onboard($overwrite = false){
 	$onboard = new _Beans_Admin_Onboarding_Options();
 	$onboard->import();
 
+	/**
+	 * Fire after everthing is imported.
+	 *
+	 * @since  2.0.0
+	 */
+	do_action('beans_onboarding_after_import');
+
 	flush_rewrite_rules(true);
 }
 
