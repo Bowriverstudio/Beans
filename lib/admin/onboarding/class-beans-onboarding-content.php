@@ -64,7 +64,6 @@ final class _Beans_Onboarding_Content
 		<?php
 	}
 
-
 	/**
 	 * Imports the demo content during onboarding.
 	 *
@@ -75,6 +74,49 @@ final class _Beans_Onboarding_Content
 	 */
 	public function import_content($overwrite = false)
 	{
+
+		// Clear beans_onboarding_imported_post_ids
+		update_option('beans_onboarding_imported_post_ids', array(), false);
+
+		$content = self::onboarding_content();
+		$this->insert_content($content, $overwrite);
+
+		/**
+		 * Fire after content is imported.
+		 *
+		 * @since  2.0.0
+		 */
+		do_action('beans_onboarding_after_import_content');
+
+
+		$this->import_custom_content($overwrite);
+
+	}
+
+	public function import_custom_content($overwrite){
+		$directories_to_import = apply_filters( 'beans_onboarding_directories', array() );
+		if( $directories_to_import ){
+			foreach( $directories_to_import as $directory ){
+				if( file_exists($directory) ){
+					$files = array_slice(scandir($directory), 2);
+					$data = array();
+					d($files);
+					foreach ($files as $file) {
+						$_file = $directory . '/' . $file;
+						d($_file);
+						list($slug, $extension) = explode('.', $file) ;
+						if (is_readable($_file)) {
+							$data[$slug] = require $_file;
+						}
+
+					}
+				$this->insert_content($data, $overwrite);
+				}
+			}
+		}
+	}
+
+	private function insert_content(array $content, $overwrite = false){
 		$errors = [];
 
 		$homepage_edit_link = false;
@@ -89,7 +131,6 @@ final class _Beans_Onboarding_Content
 			'ping_status' => 'closed',
 		];
 
-		$content = self::onboarding_content();
 
 		if (!empty($content)) {
 
@@ -203,15 +244,8 @@ final class _Beans_Onboarding_Content
 
 
 
-			/**
-			 * Fire after content is imported.
-			 *
-			 * @since  2.10.0
-			 */
-			do_action('beans_onboarding_after_import_content', $content, $imported_post_ids);
-
 			// Save the imported post IDs for use during menu item creation.
-			update_option('beans_onboarding_imported_post_ids', $imported_post_ids, false);
+			update_option('beans_onboarding_imported_post_ids', array_merge(get_option('beans_onboarding_imported_post_ids'), $imported_post_ids), false);
 
 		}
 

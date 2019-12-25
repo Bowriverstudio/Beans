@@ -224,11 +224,15 @@ namespace {
 					array(
 						'Constant' => 'ONBOARDING_CONTENT_PATH',
 						'Value' => ONBOARDING_CONTENT_PATH,
-					),					array(
+					),
+					array(
 						'Constant' => 'ONBOARDING_IMAGE_URL',
 						'Value' => ONBOARDING_IMAGE_URL,
 					),
-
+					array(
+						'Constant' => 'ONBOARDING_IMPORT_PATH',
+						'Value' => ONBOARDING_IMPORT_PATH,
+					),
 
 
 				);

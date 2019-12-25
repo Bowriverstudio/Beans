@@ -37,6 +37,7 @@ function beans_define_constants() {
 	define( 'CHILD_PATH', wp_normalize_path( trailingslashit( get_stylesheet_directory() ) ) );
 	define( 'CHILD_URL',  trailingslashit(get_stylesheet_directory_uri()));
 	define( 'ONBOARDING_CONTENT_PATH', wp_normalize_path( trailingslashit( get_stylesheet_directory() . '/config/import/content' ) ) );
+	define( 'ONBOARDING_IMPORT_PATH', wp_normalize_path( trailingslashit( get_stylesheet_directory() . '/config/import' ) ) );
 	define( 'ONBOARDING_IMAGE_URL',  trailingslashit(get_stylesheet_directory_uri() .'/config/import/images'));
 
 	define( 'BEANS_PATH', BEANS_THEME_PATH . 'lib/' );
