@@ -100,7 +100,6 @@ final class _Beans_Onboarding_Content
 				if( file_exists($directory) ){
 					$files = array_slice(scandir($directory), 2);
 					$data = array();
-					d($files);
 					foreach ($files as $file) {
 						$_file = $directory . '/' . $file;
 						d($_file);
