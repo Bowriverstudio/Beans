@@ -102,7 +102,6 @@ final class _Beans_Onboarding_Content
 					$data = array();
 					foreach ($files as $file) {
 						$_file = $directory . '/' . $file;
-						d($_file);
 						list($slug, $extension) = explode('.', $file) ;
 						if (is_readable($_file)) {
 							$data[$slug] = require $_file;
