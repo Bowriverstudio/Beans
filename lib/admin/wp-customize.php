@@ -50,27 +50,27 @@ function beans_do_register_wp_customize_options() {
 	// Get layout option without default for the count.
 	$options = beans_get_layouts_for_options();
 
-	// Only show the layout options if more than two layouts are registered.
-	if ( count( $options ) > 2 ) {
-		$fields = array(
-			array(
-				'id'      => 'beans_layout',
-				'label'   => __( 'Default Layout', 'tm-beans' ),
-				'type'    => 'radio',
-				'default' => beans_get_default_layout(),
-				'options' => $options,
-			),
-		);
-
-		beans_register_wp_customize_options(
-			$fields,
-			'beans_layout',
-			array(
-				'title'    => __( 'Default Layout', 'tm-beans' ),
-				'priority' => 1000,
-			)
-		);
-	}
+//	// Only show the layout options if more than two layouts are registered.
+//	if ( count( $options ) > 2 ) {
+//		$fields = array(
+//			array(
+//				'id'      => 'beans_layout',
+//				'label'   => __( 'Default Layout', 'tm-beans' ),
+//				'type'    => 'radio',
+//				'default' => beans_get_default_layout(),
+//				'options' => $options,
+//			),
+//		);
+//
+//		beans_register_wp_customize_options(
+//			$fields,
+//			'beans_layout',
+//			array(
+//				'title'    => __( 'Default Layout', 'tm-beans' ),
+//				'priority' => 1000,
+//			)
+//		);
+//	}
 
 	$fields = array(
 		array(
