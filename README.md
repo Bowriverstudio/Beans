@@ -1,3 +1,7 @@
+#
+This version is not 100% Tested.  It is still being developed.
+
+
 # Beans WordPress theme framework
 
 [![Build Status](https://travis-ci.org/Getbeans/Beans.svg?branch=development)](https://travis-ci.org/Getbeans/Beans)
