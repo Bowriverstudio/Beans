@@ -731,6 +731,7 @@ function beans_get_config( string $configuration_filename ) {
 		return (array) $data;
 	}
 
+	// @TODO Consider deleting
 	// Load configuration file from Frontend Framework if exists.
 	if( defined( 'BEANS_FRONTEND_FRAMEWORK_CONFIG_PATH' ) ){
 		$plugin_file = BEANS_FRONTEND_FRAMEWORK_CONFIG_PATH . $configuration_filename . '.php';
@@ -741,7 +742,7 @@ function beans_get_config( string $configuration_filename ) {
 	}
 
 	// Loads configuration file from Beans Theme if Exists.
-	$parent_file = get_template_directory() . '/config/' . $configuration_filename . '.php';
+	$parent_file = BEANS_THEME_PATH . '/config/' . $configuration_filename . '.php';
 	if ( is_readable( $parent_file ) ) {
 		$data = require $parent_file;
 		if (is_readable( $parent_file ) ) {

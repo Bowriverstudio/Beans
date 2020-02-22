@@ -56,6 +56,7 @@ function beans_load_api_components( $components ) {
 		'rest'       => $root . 'rest/functions.php',
 		'breadcrumbs'       => $root . 'breadcrumbs/functions.php',
 		'wp-cli'       => $root . 'wp-cli/class-beans-wp-cli.php',
+		'conditional-block' => $root . 'blocks/conditional-block/conditional-block.php'
 	);
 
 	// Only load admin fragments if is_admin() is true.

@@ -35,7 +35,7 @@ function get_layout_options()
 		'/layout-options',
 		[
 			'methods' => 'GET',
-			'callback' => '\beans_get_layouts_for_options',
+			'callback' => '\beans_get_layout_options',
 		]
 	);
 }
@@ -43,21 +43,23 @@ function get_layout_options()
 
 add_action('rest_api_init', __NAMESPACE__ . '\\get_default_layout');
 /**
- * Add `layout-options` endpoint to the REST API.
+ * Add `layout-default` endpoint to the REST API.
  *
  * Returns an array of options with corresponding labels that can be called
  * via the 'beans_remove_action' function.
  *
- * Example: `curl https://example.com/wp-json/beans/v1/layout-options`
+ * Example: `curl https://example.com/wp-json/beans/v1/layout-default`
  *
  * Example response:
  *
- * [
- *        "post": "c_sp",
- *        "page": "c",
- *    ]
- *
- * @since 2.0.0
+ * "c": {
+ *       "icon": "c",
+ *       "src": "http://beansbootstrap.test/wp-content/themes/Beans/lib/admin/assets/images/layouts/c.png",
+ *       "alt": "Full-Width Content Layout",
+ *       "screen_reader_text": "Option for the Full-Width Content Layout."
+ *   } 
+ * 
+ * @since 3.0.0
  */
 function get_default_layout()
 {
@@ -72,7 +74,23 @@ function get_default_layout()
 }
 
 add_action('rest_api_init', __NAMESPACE__ . '\\get_default_selected_layouts');
-
+/**
+ * Add `layout-default-selected` endpoint to the REST API.
+ *
+ * Returns an array of the default layouts based on post type.
+ *
+ *
+ * Example response:
+ *
+ * "c": {
+ *       "icon": "c",
+ *       "src": "http://beansbootstrap.test/wp-content/themes/Beans/lib/admin/assets/images/layouts/c.png",
+ *       "alt": "Full-Width Content Layout",
+ *       "screen_reader_text": "Option for the Full-Width Content Layout."
+ *   } 
+ * 
+ * @since 3.0.0
+ */
 function get_default_selected_layouts()
 {
 	\register_rest_route(

@@ -109,9 +109,10 @@ function beans_load_dependencies() {
 			// 'compiler',
 			// 'uikit',
 			// 'template',
+			'conditional-block',
 			'layout',
 			'widget',
-			// 'rest',
+			'rest',
 			// 'breadcrumbs',
 			'wp-cli'
 		)
