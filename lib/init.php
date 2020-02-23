@@ -103,7 +103,7 @@ function beans_load_dependencies() {
 			'actions',
 			// 'html',
 			// 'term-meta',
-			// 'post-meta',
+			'post-meta',
 			// 'image',
 			// 'wp-customize',
 			// 'compiler',

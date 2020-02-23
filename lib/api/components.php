@@ -53,10 +53,11 @@ function beans_load_api_components( $components ) {
 		'layout'       => $root . 'layout/functions.php',
 		'template'     => $root . 'template/functions.php',
 		'widget'       => $root . 'widget/functions.php',
-		'rest'       => $root . 'rest/functions.php',
-		'breadcrumbs'       => $root . 'breadcrumbs/functions.php',
+		'rest'         => $root . 'rest/functions.php',
+		'breadcrumbs'  => $root . 'breadcrumbs/functions.php',
 		'wp-cli'       => $root . 'wp-cli/class-beans-wp-cli.php',
-		'conditional-block' => $root . 'blocks/conditional-block/conditional-block.php'
+		'conditional-block' => $root . 'blocks/conditional-block/conditional-block.php',
+
 	);
 
 	// Only load admin fragments if is_admin() is true.
