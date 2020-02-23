@@ -114,7 +114,10 @@ function beans_load_dependencies() {
 			'widget',
 			'rest',
 			// 'breadcrumbs',
-			'wp-cli'
+			'wp-cli',
+			'bootstrap', // @TODO Add theme-support to include this.
+			'body-container-block',
+			'container',
 		)
 	);
 

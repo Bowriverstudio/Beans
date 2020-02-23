@@ -1,7 +1,5 @@
 <?php
-
 namespace Beans\Framework\API\Rest;
-
 
 add_action('rest_api_init', __NAMESPACE__ . '\\get_container_options');
 /**
@@ -10,7 +8,7 @@ add_action('rest_api_init', __NAMESPACE__ . '\\get_container_options');
  * Returns an array of options with corresponding labels that can be called
  * via the 'beans_remove_action' function.
  *
- * Example: `curl https://example.com/wp-json/beans/v1/layout-options`
+ * Example: `curl https://example.com/wp-json/beans/v1/containers`
  *
  * Example response:
  *
