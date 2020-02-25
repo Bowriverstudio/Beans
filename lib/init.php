@@ -118,6 +118,7 @@ function beans_load_dependencies() {
 			'bootstrap', // @TODO Add theme-support to include this.
 			'body-container-block',
 			'container',
+			'color-scheme-selector-block'
 		)
 	);
 

@@ -58,6 +58,7 @@ function beans_load_api_components( $components ) {
 		'wp-cli'       => $root . 'wp-cli/class-beans-wp-cli.php',
 		'conditional-block' => $root . 'blocks/conditional-block/conditional-block.php',
 		'body-container-block' => $root . 'blocks/body-container/body-container.php',
+		'color-scheme-selector-block' => $root . 'blocks/color-scheme-selector/color-scheme-selector.php',
 		'bootstrap' => $root . 'cssframework/bootstrap/functions.php',
 		'container' => $root . 'container/functions.php',
 
