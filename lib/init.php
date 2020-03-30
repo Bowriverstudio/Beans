@@ -105,7 +105,7 @@ function beans_load_dependencies() {
 			// 'term-meta',
 			'post-meta',
 			// 'image',
-			// 'wp-customize',
+			'wp-customize',
 			// 'compiler',
 			// 'uikit',
 			// 'template',
@@ -166,6 +166,7 @@ function beans_add_theme_support() {
 	add_theme_support( 'wp-block-styles' );
 	add_theme_support( 'align-wide' );
 	add_theme_support( 'editor-styles' );
+	add_theme_support( 'responsive-embeds' );
 
 
 	$theme_supports = beans_get_config( 'theme-supports' );
