@@ -195,6 +195,7 @@ namespace {
 			 */
 			public function constants()
 			{
+
 				$fields = array('Constant', 'Value');
 				$items = array(
 					array(
@@ -218,21 +219,25 @@ namespace {
 						'Value' => CHILD_URL,
 					),
 					array(
-						'Constant' => 'BEANS_FRONTEND_FRAMEWORK',
-						'Value' => BEANS_FRONTEND_FRAMEWORK,
+						'Constant' => 'BEANS_API_PATH',
+						'Value' => BEANS_API_PATH,
 					),
-					array(
-						'Constant' => 'ONBOARDING_CONTENT_PATH',
-						'Value' => ONBOARDING_CONTENT_PATH,
-					),
-					array(
-						'Constant' => 'ONBOARDING_IMAGE_URL',
-						'Value' => ONBOARDING_IMAGE_URL,
-					),
-					array(
-						'Constant' => 'ONBOARDING_IMPORT_PATH',
-						'Value' => ONBOARDING_IMPORT_PATH,
-					),
+					// array(
+					// 	'Constant' => 'BEANS_FRONTEND_FRAMEWORK',
+					// 	'Value' => BEANS_FRONTEND_FRAMEWORK,
+					// ),
+					// array(
+					// 	'Constant' => 'ONBOARDING_CONTENT_PATH',
+					// 	'Value' => ONBOARDING_CONTENT_PATH,
+					// ),
+					// array(
+					// 	'Constant' => 'ONBOARDING_IMAGE_URL',
+					// 	'Value' => ONBOARDING_IMAGE_URL,
+					// ),
+					// array(
+					// 	'Constant' => 'ONBOARDING_IMPORT_PATH',
+					// 	'Value' => ONBOARDING_IMPORT_PATH,
+					// ),
 
 
 				);

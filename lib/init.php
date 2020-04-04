@@ -133,8 +133,8 @@ function beans_load_dependencies() {
 	do_action( 'beans_after_load_api' );
 }
 
+add_action( 'after_setup_theme', 'beans_add_theme_support' );
 
-add_action( 'beans_init', 'beans_add_theme_support' );
 /**
  * Add theme support.
  *
@@ -145,30 +145,6 @@ add_action( 'beans_init', 'beans_add_theme_support' );
  */
 function beans_add_theme_support() {
 
-	add_theme_support( 'title-tag' );
-	add_theme_support( 'custom-background' );
-	add_theme_support( 'menus' );
-	add_theme_support( 'post-thumbnails' );
-	add_theme_support( 'automatic-feed-links' );
-	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
-	add_theme_support(
-		'custom-header',
-		array(
-			'width'       => 2000,
-			'height'      => 500,
-			'flex-height' => true,
-			'flex-width'  => true,
-			'header-text' => false,
-		)
-	);
-
-	// Gutenberg Specific.
-	add_theme_support( 'wp-block-styles' );
-	add_theme_support( 'align-wide' );
-	add_theme_support( 'editor-styles' );
-	add_theme_support( 'responsive-embeds' );
-
-
 	$theme_supports = beans_get_config( 'theme-supports' );
 	foreach ( $theme_supports as $feature => $args ) {
 		if($args ){
@@ -178,16 +154,49 @@ function beans_add_theme_support() {
 		}
 	}
 
+	if( current_theme_supports('bean-default') ){
+		// Add the Bean Defaults
+		add_theme_support( 'title-tag' );
+		add_theme_support( 'custom-background' );
+		add_theme_support( 'menus' );
+		add_theme_support( 'post-thumbnails' );
+		add_theme_support( 'automatic-feed-links' );
+		add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
+		add_theme_support(
+			'custom-header',
+			array(
+				'width'       => 2000,
+				'height'      => 500,
+				'flex-height' => true,
+				'flex-width'  => true,
+				'header-text' => false,
+			)
+		);
+
+		// Gutenberg Specific.
+		add_theme_support( 'wp-block-styles' );
+		add_theme_support( 'align-wide' );
+		add_theme_support( 'editor-styles' );
+		add_theme_support( 'responsive-embeds' );
+	}
+
 	// Default hides the admin edit link
 	add_filter( 'edit_post_link', '__return_empty_string' );
-
 
 	// Adds support for editor font sizes.
 	// Adds support for editor color palette.
 	if ( is_admin() ) {
-		$block_editor_settings = beans_get_config( 'block-editor-settings' );
-		foreach ( $block_editor_settings as $key => $value ) {
-			add_theme_support( $key, $value );
+
+		if( current_theme_supports('bootstrap') ) {
+
+			require_once ( BEANS_API_PATH . 'bootstrap/block-editor-settings.php');
+
+
+		} else {
+			// $block_editor_settings = beans_get_config( 'block-editor-settings' );
+			// foreach ( $block_editor_settings as $key => $value ) {
+			// 	add_theme_support( $key, $value );
+			// }
 		}
 	}
 

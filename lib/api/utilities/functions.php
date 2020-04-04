@@ -717,12 +717,15 @@ function _beans_doing_autosave() {
  * Should file doesn't exist or empty in the child, and frontend framework then search the parent for the config file.
  *
  * @since 1.5.2
- * @updaged 2.0.0 - Add support for plugin configuration.
+ * @updated 2.0.0 - Add support for plugin configuration.
+ * @updated 3.0.0 - Add support for json and themes.
  *
  * @param string $configuration_filename The configuration file to locate  (not including ".php" file extension).
+ * @param string $onfig_dir_append "config/$config_dir_append"
+ * @param string $file_extension - php or json ...
  * @return array The configuration data.
  */
-function beans_get_config( string $configuration_filename ) {
+function beans_get_config( string $configuration_filename, $color_scheme = '', $file_extension = 'php' ) {
 
 	// Load configuration file from Child Theme if exists.
 	$child_file = get_stylesheet_directory() . '/config/' . $configuration_filename . '.php';
@@ -753,7 +756,14 @@ function beans_get_config( string $configuration_filename ) {
 	return (array) array();
 }
 
+function beans_get_config_json(string $configuration_filename, string $config_dir_append = ''){
+	$parent_file = BEANS_THEME_PATH . '/config/' . $config_dir_append . '/' .$configuration_filename . '.json';
 
+	$strJsonFileContents = file_get_contents($parent_file);
+	// Convert to array 
+	return json_decode($strJsonFileContents, true);
+
+}
 
 /**
  * Locate the customizer configuration file for the default id.
